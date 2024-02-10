@@ -35,6 +35,30 @@ class UsersSeeder extends Seeder
             'admin' => true,
             'email' => 'fhamelthibault@hotmail.com',
             'password' => 'password',
+            ],
+            [
+            'nom' => 'Aidoun',
+            'prenom' => 'Lyes',
+            'pseudo' => 'Kk0lt',
+            'admin' => true,
+            'email' => 'culmarde@hotmail.com',
+            'password' => 'password',
+            ],
+            [
+            'nom' => 'Leao-Belzile',
+            'prenom' => 'Cédric',
+            'pseudo' => 'CedXComa',
+            'admin' => false,
+            'email' => 'ok@hotmail.com',
+            'password' => 'password',
+            ],
+            [
+            'nom' => 'Des Ruisseaux',
+            'prenom' => 'Thomas',
+            'pseudo' => 'Woopser',
+            'admin' => false,
+            'email' => 'woopdidoo@hotmail.com',
+            'password' => 'password',
             ]
         ]);
     }

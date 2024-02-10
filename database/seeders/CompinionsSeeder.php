@@ -26,8 +26,21 @@ class CompinionsSeeder extends Seeder
     {
         DB::table('compinions')->insert([
             [
+                 
             'user_id' => 1,
-            'nom' => 'Flash Cac',
+            'nom' => 'Rocky',
+            ],
+            [
+            'user_id' => 2,
+            'nom' => 'Apollo',
+            ],
+            [
+            'user_id' => 3,
+            'nom' => 'Clubber',
+            ],
+            [
+            'user_id' => 4,
+            'nom' => 'Drago',
             ]
         ]);
     }
