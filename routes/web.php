@@ -18,3 +18,13 @@ use App\Http\Controllers\UsersController;
 
 Route::get('/',
 [UsersController::class, 'index'])->name('users.accueil');
+
+/*----------------------- Users ------------------------*/
+
+// Ajouter un nouvel utilisateur
+Route::post('/users/store',
+[UsersController::class, 'store'])->name('users.store');
+
+// Supprimer un utilisateur
+Route::delete('/users/{id}',
+[UsersController::class, 'destroy'])->name('users.destroy');

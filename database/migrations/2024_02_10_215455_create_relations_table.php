@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('relations', function (Blueprint $table) {
-            $table->id();
-            $table->foreign('user1')->references('id')->on('users');
-            $table->foreign('user2')->references('id')->on('users');
-            $table->enum('relation', ['friend', 'block']);
+            // $table->id();
+            // $table->foreign('user1')->references('id')->on('users');
+            // $table->foreign('user2')->references('id')->on('users');
+            // $table->enum('relation', ['friend', 'block']);
             $table->timestamps();
         });
     }

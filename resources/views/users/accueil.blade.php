@@ -7,10 +7,13 @@
 </head>
 
 <body>
+<div class="myContainer">
 
     <div class="liste-notifications">
-        <div class="bjr_container">
-            <h6 class="bonjour"></h6>
+        <div class="leftSpace">
+        <input type="text" id="searchInput" placeholder="Rechercher...">
+        <button onclick="searchTable()" id="searchButton" class="btn btn-search"><i class="fa-solid fa-search"></i>Rechercher</button>
+            
         </div>
         <div class="navigationRapide">
             <h3 class ="userManageTitle">Gestion des utilisateur: </h3>
@@ -20,11 +23,13 @@
                     <i class="fa-sharp fa-solid fa-file-pen"></i>  Créer un nouvel utilisateur.
                     </a>
                 </li>
+                <li>
+              
+                </li>
             </ul>
         </div>
     </div>
     
-    <div class="container">
 
 
     <!-- Modal -->
@@ -40,7 +45,7 @@
         </div>
 
         <div class="modal-body">
-            <form method="POST" action="" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('users.store') }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group mt-2">
                 <label for="pseudo">Pseudo: </label><br>
@@ -55,8 +60,12 @@
                 <input type="text" id="prenom" name="prenom" required>
             </div>
             <div class="form-group mt-2">
+                <label for="email">Courriel: </label><br>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group mt-2">
                 <label for="password">Mot de passe: </label><br>
-                <input type="text" id="password" name="password" required>
+                <input type="password" id="password" name="password" required>
             </div>
         </div>
 
@@ -76,8 +85,9 @@
 
     <!--Tableu des utilisateurs-->
     <h2>Liste des utilisateurs</h2>
+    @if (count($users) > 0)
     <div class="table-wrapper">
-        <table class="fl-table">
+        <table id="dataTable" class="fl-table">
             <thead>
             <tr>
                 <th>Pseudo</th>
@@ -85,44 +95,36 @@
                 <th>Prénom</th>
                 <th>Compinion</th>
                 <th>Série actuelle</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
+            @foreach ($users as $user)
             <tr>
-                <td>Sk8terB0y</td>
-                <td>Lyes</td>
-                <td>Aidoun</td>
-                <td>Gorlock</td>
-                <td>8</td>
+                <td>{{ $user['pseudo'] }}</td>
+                <td>{{ $user['nom'] }}</td>
+                <td>{{ $user['prenom'] }}</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td><form class="delete-form" action="{{ route('users.destroy', $user->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn-delete" type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?')"><i class="fa-solid fa-trash"></i></button>
+                </form></td>
             </tr>
-            <tr>
-                <td>Content 2</td>
-                <td>Content 2</td>
-                <td>Content 2</td>
-                <td>Content 2</td>
-                <td>Content 2</td>
-            </tr>
-            <tr>
-                <td>Content 3</td>
-                <td>Content 3</td>
-                <td>Content 3</td>
-                <td>Content 3</td>
-                <td>Content 3</td>
-            </tr>
-            <tr>
-                <td>Content 4</td>
-                <td>Content 4</td>
-                <td>Content 4</td>
-                <td>Content 4</td>
-                <td>Content 4</td>
-            </tr>
+            @endforeach
+            
 
             <tbody>
         </table>
     </div>
-
+    @else
+    <p class ="aucun-form">Aucun utilisateur </p>
+    @endif
     </div>
     
+    <script src="{{ asset('js/accueil.js') }}"></script>
+
 </body>
 
 

@@ -56,7 +56,7 @@
           <i class="fa-regular fa-rectangle-list blue"></i>
               <a class="blue titreNav" href=""><span class="mx-2">Gestion:</span></a>
               <div class="mt-3 mx-3">
-                  <h6><a class="liens" href="">Gestion des utilisateurs</a></h6>
+                  <h6><a class="liens" href="{{ route('users.accueil') }}">Gestion des utilisateurs</a></h6>
                  
               </div>
         </div>
