@@ -2,8 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
-
-
+use App\Htpp\Controllers\DataController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,9 +27,6 @@ use App\Http\Controllers\UsersController;
     // Supprimer un utilisateur
     Route::delete('/users/{id}',
     [UsersController::class, 'destroy'])->name('users.destroy');
-
-
-
 
 //Routes pour l'application
     $router->get('data', 'DataController@index');
