@@ -13,6 +13,7 @@ class RelationsSeeder extends Seeder
      */
     public function run(): void
     {
+
         DB::table('relations')->insert([
             [    
             'user1_id' => 1,
@@ -34,6 +35,7 @@ class RelationsSeeder extends Seeder
             'user2_id' => 3,
             'relation' => 'friend'
             ],
+
         ]);
     }
 }
