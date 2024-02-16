@@ -13,6 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Routes pour l'interface web
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+//Routes pour l'application
+
+$router->get('data', 'DataController@index');
+$router->post('data', 'DataController@store');
+$router->get('data/{id}', 'DataController@show');
+$router->put('data/{id}', 'DataController@update');
+$router->delete('data/{id}', 'DataController@destroy');
