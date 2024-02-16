@@ -13,27 +13,29 @@ class RelationsSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('compinions')->insert([
-            // [    
-            // 'user1' => 1,
-            // 'user2' => 2,
-            // 'relation' => 'block'
-            // ],
-            // [
-            // 'user1' => 1,
-            // 'user2' => 3,
-            // 'relation' => 'friend'
-            // ],
-            // [
-            // 'user1' => 2,
-            // 'user2' => 3,
-            // 'relation' => 'friend'
-            // ],
-            // [
-            // 'user1' => 4,
-            // 'user2' => 3,
-            // 'relation' => 'friend'
-            // ],
+
+        DB::table('relations')->insert([
+            [    
+            'user1_id' => 1,
+            'user2_id' => 2,
+            'relation' => 'blocked'
+            ],
+            [
+            'user1_id' => 1,
+            'user2_id' => 3,
+            'relation' => 'friend'
+            ],
+            [
+            'user1_id' => 2,
+            'user2_id' => 3,
+            'relation' => 'friend'
+            ],
+            [
+            'user1_id' => 4,
+            'user2_id' => 3,
+            'relation' => 'friend'
+            ],
+
         ]);
     }
 }
