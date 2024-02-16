@@ -16,15 +16,26 @@ use App\Http\Controllers\UsersController;
 |
 */
 
-Route::get('/',
-[UsersController::class, 'index'])->name('users.accueil');
-
+//Routes pour l'interface web
 /*----------------------- Users ------------------------*/
+    Route::get('/',
+    [UsersController::class, 'index'])->name('users.accueil');
 
-// Ajouter un nouvel utilisateur
-Route::post('/users/store',
-[UsersController::class, 'store'])->name('users.store');
+    // Ajouter un nouvel utilisateur
+    Route::post('/users/store',
+    [UsersController::class, 'store'])->name('users.store');
 
-// Supprimer un utilisateur
-Route::delete('/users/{id}',
-[UsersController::class, 'destroy'])->name('users.destroy');
+    // Supprimer un utilisateur
+    Route::delete('/users/{id}',
+    [UsersController::class, 'destroy'])->name('users.destroy');
+
+
+
+
+//Routes pour l'application
+    $router->get('data', 'DataController@index');
+    $router->post('data', 'DataController@store');
+    $router->get('data/{id}', 'DataController@show');
+    $router->put('data/{id}', 'DataController@update');
+    $router->delete('data/{id}', 'DataController@destroy');
+
