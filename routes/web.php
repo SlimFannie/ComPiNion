@@ -28,6 +28,10 @@ use App\Htpp\Controllers\DataController;
     Route::delete('/users/{id}',
     [UsersController::class, 'destroy'])->name('users.destroy');
 
+    //Afficher le formulaire de connexion
+    Route::get('formConnexion', 
+    [UsersController::class, 'formConnexion'])->name('users.formConnexion');
+
 //Routes pour l'application
     $router->get('data', 'DataController@index');
     $router->post('data', 'DataController@store');
