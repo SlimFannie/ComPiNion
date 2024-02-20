@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
+
 use App\Models\User;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
@@ -24,7 +27,10 @@ class UsersController extends Controller
 
 
     }
-
+    public function formConnexion()
+    {
+        return view ('users.formConnexion' );
+    }
     /**
      * Show the form for creating a new resource.
      */
@@ -100,4 +106,45 @@ class UsersController extends Controller
             return redirect()->route('users.accueil')->with('error', 'La suppression a échoué.');
         }
     }
+
+    /**
+     * Connexion/login sur le site
+     */
+    public function connexion(Request $request)
+    {
+        try {
+            $password =  $request->password;
+            $email =  $request->email;
+            log::debug($password);
+            log::debug($email);
+            $reussi = Auth::attempt(['email'=> $request->email, 'password' => $request->password]);
+            if ($reussi) {
+                $user = Auth::user();
+                if ($user->admin == true) {
+                    Log::debug("Connecté");
+                    return redirect()->route('users.accueil');
+                } 
+            } else {
+            //  Log::debug(Auth::attempt(['email'=> $request->email, 'password' => $request->password]));
+                Log::debug("here");
+            // Log::debug($request->all());
+                return redirect()->route('users.formConnexion')->withErrors(['email' => 'Les informations d\'identification sont incorrectes. Veuillez réessayer.']);
+
+            }
+    } catch (\Throwable $e) {
+        Log::error($e);
+        return redirect()->back()->withErrors(['error' => 'La modification du mot de passe a échoué.']);
+    }
+
+    }
+    
+    // Déconnexion
+        public function logout()
+        {
+            Auth::logout();
+            return redirect()->route('users.formConnexion');
+        }
+
+
+
 }
