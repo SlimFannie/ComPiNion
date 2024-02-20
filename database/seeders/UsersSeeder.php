@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Hash;
 use DB;
 
 class UsersSeeder extends Seeder
@@ -34,7 +35,7 @@ class UsersSeeder extends Seeder
             'pseudo' => 'SlimFannie',
             'admin' => true,
             'email' => 'fhamelthibault@hotmail.com',
-            'password' => 'password',
+            'password' => Hash::make('Password123'),
             ],
             [
             'nom' => 'Aidoun',
@@ -42,7 +43,7 @@ class UsersSeeder extends Seeder
             'pseudo' => 'Kk0lt',
             'admin' => true,
             'email' => 'culmarde@hotmail.com',
-            'password' => 'password',
+            'password' => Hash::make('Password123'),
             ],
             [
             'nom' => 'Leao-Belzile',
@@ -50,7 +51,7 @@ class UsersSeeder extends Seeder
             'pseudo' => 'CedXComa',
             'admin' => false,
             'email' => 'ok@hotmail.com',
-            'password' => 'password',
+            'password' => Hash::make('Password123'),
             ],
             [
             'nom' => 'Des Ruisseaux',
@@ -58,7 +59,7 @@ class UsersSeeder extends Seeder
             'pseudo' => 'Woopser',
             'admin' => false,
             'email' => 'woopdidoo@hotmail.com',
-            'password' => 'password',
+            'password' => Hash::make('Password123'),
             ]
         ]);
     }
