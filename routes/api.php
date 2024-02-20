@@ -2,7 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\AppUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,10 +16,18 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-Route::post('register', 'AuthController@register');
-Route::post('login', 'AuthController@login');
+//Création compte
+Route::post('register', 'API\AuthController@register');
+//Login
+Route::post('login', 'API\AuthController@login');
 
 Route::middleware('auth:api')->group(function() {
-  Route::get('user', 'AuthController@user');
-  Route::post('logout', 'AuthController@logout');
+  //Usager logged in
+  Route::get('/compinion/{id}', 'API\AuthController@user');
+  //Logout
+  Route::post('logout', 'API\AuthController@logout');
+  //Modification compte
+  Route::patch('/compinion/{id}/modification/', 'API\AppUserController@update');
+  //Suppression du compte
+  Route::delete('/compinion/{id}/suppression/', 'API\AppUserController@destroy');
 });
