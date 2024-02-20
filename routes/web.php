@@ -17,7 +17,7 @@ use App\Htpp\Controllers\DataController;
 
 //Routes pour l'interface web
 /*----------------------- Users ------------------------*/
-    Route::get('/',
+    Route::get('Compinion',
     [UsersController::class, 'index'])->name('users.accueil');
 
     // Ajouter un nouvel utilisateur
@@ -27,6 +27,14 @@ use App\Htpp\Controllers\DataController;
     // Supprimer un utilisateur
     Route::delete('/users/{id}',
     [UsersController::class, 'destroy'])->name('users.destroy');
+
+    //Afficher le formulaire de connexion
+    Route::get('/', 
+    [UsersController::class, 'formConnexion'])->name('users.formConnexion');
+
+    //Connexion
+    Route::post('connexion',
+    [UsersController::class, 'connexion'])->name('users.connexion');
 
 //Routes pour l'application
     $router->get('data', 'DataController@index');
