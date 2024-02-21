@@ -115,18 +115,16 @@ class UsersController extends Controller
         try {
             $password =  $request->password;
             $email =  $request->email;
-            log::debug($password);
-            log::debug($email);
             $reussi = Auth::attempt(['email'=> $request->email, 'password' => $request->password]);
             if ($reussi) {
                 $user = Auth::user();
                 if ($user->admin == true) {
-                    Log::debug("Connecté");
+                    Log::debug("Connexion réussi");
                     return redirect()->route('users.accueil');
                 } 
             } else {
             //  Log::debug(Auth::attempt(['email'=> $request->email, 'password' => $request->password]));
-                Log::debug("here");
+                Log::debug("Connexion echoué");
             // Log::debug($request->all());
                 return redirect()->route('users.formConnexion')->withErrors(['email' => 'Les informations d\'identification sont incorrectes. Veuillez réessayer.']);
 
