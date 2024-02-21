@@ -24,6 +24,8 @@ Route::post('login', 'API\AuthController@login');
 Route::middleware('auth:api')->group(function() {
   //Usager logged in
   Route::get('/compinion/{id}', 'API\AuthController@user');
+  //Tous les usagers
+  Route::get('/compinion/{id}/leaderboard', 'API\AuthController@users');
   //Logout
   Route::post('logout', 'API\AuthController@logout');
   //Modification compte
