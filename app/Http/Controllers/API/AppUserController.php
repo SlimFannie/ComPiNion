@@ -49,4 +49,16 @@ class AppUserController extends Controller
    
         return $this->sendResponse([], 'Product deleted successfully.');
     }
+
+    public function users() {
+        $users = User::all();
+
+        return $this->sendResponse($users, 'Les utilisateurs ont été trouvés avec succès.');
+    }
+
+    public function merit($id) {
+        $user = user($id);
+        
+    }
+
 }

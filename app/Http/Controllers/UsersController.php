@@ -29,7 +29,7 @@ class UsersController extends Controller
     }
     public function formConnexion()
     {
-        return view ('users.formConnexion' );
+        return view ('users.formConnexion', compact('users') );
     }
     /**
      * Show the form for creating a new resource.
