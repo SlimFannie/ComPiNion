@@ -72,14 +72,14 @@
             </div>
         </div>
         <hr> 
-        
+
         <div class="mx-3">
-       
-        <form class="form-btndisconnect" method="GET" action="">
-          
+        @if(auth()->check())
+        <form class="form-btndisconnect" method="GET" action="{{ route('logout') }}">
+          @csrf
           <button class="btnD disconnect">Fermer la session</button>
-         </form>
-            
+        </form>
+         @endif    
         </div>
 
 
