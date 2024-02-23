@@ -17,19 +17,21 @@ use App\Http\Controllers\API\AppUserController;
 */
 
 //Création compte
-Route::post('register', 'API\AuthController@register');
+Route::post('register', [AuthController::class, 'register']);
 //Login
-Route::post('login', 'API\AuthController@login');
+Route::post('login', [AuthController::class, 'login']);
 
 Route::middleware('auth:api')->group(function() {
+
   //Usager logged in
-  Route::get('/compinion/{id}', 'API\AuthController@user');
+  Route::get('/compinion/{id}', [AuthController::class, 'user']);
   //Tous les usagers
-  Route::get('/compinion/{id}/leaderboard', 'API\AppUserController@users');
+  Route::get('/compinion/{id}', [AppUserController::class, 'users']);
   //Logout
-  Route::post('logout', 'API\AuthController@logout');
+  Route::post('logout', [AuthController::class, 'logout']);
   //Modification compte
-  Route::patch('/compinion/{id}/modification/', 'API\AppUserController@update');
+  Route::patch('/compinion/{id}', [AppUserController::class, 'update']);
   //Suppression du compte
-  Route::delete('/compinion/{id}/suppression/', 'API\AppUserController@destroy');
+  Route::delete('/compinion/{id}', [AppUserController::class, 'destroy']);
+
 });

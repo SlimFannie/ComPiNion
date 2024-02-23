@@ -8,7 +8,7 @@ use App\User;
 use Validator;
 use App\Http\Resources\User as UserResource;
 
-class AppUserController extends Controller
+class AppUserController extends DataController
 {
     /**
      * Update the specified resource in storage.
@@ -19,22 +19,7 @@ class AppUserController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        $input = $request->all();
-   
-        $validator = Validator::make($input, [
-            'pseudo' => 'required',
-            'detail' => 'required'
-        ]);
-   
-        if($validator->fails()){
-            return $this->sendError('Validation Error.', $validator->errors());       
-        }
-   
-        $product->name = $input['name'];
-        $product->detail = $input['detail'];
-        $product->save();
-   
-        return $this->sendResponse(new ProductResource($product), 'Product updated successfully.');
+
     }
    
     /**
@@ -45,20 +30,13 @@ class AppUserController extends Controller
      */
     public function destroy(Product $product)
     {
-        $product->delete();
-   
-        return $this->sendResponse([], 'Product deleted successfully.');
+
     }
 
     public function users() {
         $users = User::all();
 
         return $this->sendResponse($users, 'Les utilisateurs ont été trouvés avec succès.');
-    }
-
-    public function merit($id) {
-        $user = user($id);
-        
     }
 
 }
