@@ -29,7 +29,7 @@ class UsersController extends Controller
     }
     public function formConnexion()
     {
-        return view ('users.formConnexion', compact('users') );
+        return view ('users.formConnexion');
     }
     /**
      * Show the form for creating a new resource.
@@ -140,7 +140,7 @@ class UsersController extends Controller
         public function logout()
         {
             Auth::logout();
-            return redirect()->route('users.formConnexion');
+            return redirect()->route('login');
         }
 
 
