@@ -29,7 +29,7 @@ Route::middleware('auth:api')->group(function() {
   //Usager logged in
   Route::get('/compinion/{id}', [AuthController::class, 'user'])->name('user');
   //Tous les usagers
-  Route::get('/compinion/{id}', [AppUserController::class, 'users'])->name('users');
+  Route::get('/users', [AppUserController::class, 'users'])->name('users');
   //Logout
   Route::post('logout', [AuthController::class, 'logout'])->name('logout');
   //Modification compte
