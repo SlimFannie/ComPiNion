@@ -19,22 +19,25 @@ use App\Http\Controllers\FtpController;
 
 Route::post('ftp/upload', [FtpController::class, 'uploadToFtp']);
 
-//Création compte
+// Création de compte
 Route::post('register', [AuthController::class, 'register'])->name('register');
-//Login
+
+// Login
 Route::post('login', [AuthController::class, 'login'])->name('login');
 
-Route::middleware('auth:api')->group(function() {
 
-  //Usager logged in
-  Route::get('/compinion/{id}', [AuthController::class, 'user'])->name('user');
-  //Tous les usagers
-  Route::get('/users', [AppUserController::class, 'users'])->name('users');
-  //Logout
-  Route::post('logout', [AuthController::class, 'logout'])->name('logout');
-  //Modification compte
-  Route::patch('/compinion/{id}', [AppUserController::class, 'update'])->name('update');
-  //Suppression du compte
-  Route::delete('/compinion/{id}', [AppUserController::class, 'destroy'])->name('destroy');
+    // Usager logged in
+    Route::get('user/{id}', [AuthController::class, 'user'])->name('user');
+    
+    // Tous les usagers
+    Route::get('users', [AppUserController::class, 'users'])->name('users');
 
-});
+    // Logout
+    Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+
+    // Modification compte
+    Route::patch('compinion/{id}', [AppUserController::class, 'update'])->name('update');
+
+    // Suppression du compte
+    Route::delete('compinion/{id}', [AppUserController::class, 'destroy'])->name('destroy');
+
