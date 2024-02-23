@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\AppUserController;
+use App\Http\Controllers\FtpController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,22 +17,24 @@ use App\Http\Controllers\API\AppUserController;
 |
 */
 
+Route::post('ftp/upload', [FtpController::class, 'uploadToFtp']);
+
 //Création compte
-Route::post('register', [AuthController::class, 'register']);
+Route::post('register', [AuthController::class, 'register'])->name('register');
 //Login
-Route::post('login', [AuthController::class, 'login']);
+Route::post('login', [AuthController::class, 'login'])->name('login');
 
 Route::middleware('auth:api')->group(function() {
 
   //Usager logged in
-  Route::get('/compinion/{id}', [AuthController::class, 'user']);
+  Route::get('/compinion/{id}', [AuthController::class, 'user'])->name('user');
   //Tous les usagers
-  Route::get('/compinion/{id}', [AppUserController::class, 'users']);
+  Route::get('/compinion/{id}', [AppUserController::class, 'users'])->name('users');
   //Logout
-  Route::post('logout', [AuthController::class, 'logout']);
+  Route::post('logout', [AuthController::class, 'logout'])->name('logout');
   //Modification compte
-  Route::patch('/compinion/{id}', [AppUserController::class, 'update']);
+  Route::patch('/compinion/{id}', [AppUserController::class, 'update'])->name('update');
   //Suppression du compte
-  Route::delete('/compinion/{id}', [AppUserController::class, 'destroy']);
+  Route::delete('/compinion/{id}', [AppUserController::class, 'destroy'])->name('destroy');
 
 });
