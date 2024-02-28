@@ -56,6 +56,17 @@ return [
             'throw' => false,
         ],
 
+        'ftp' => [
+            'driver' => 'ftp',
+            'host' => env('172.16.86.193'),
+            'username' => env('userteam'),
+            'password' => env('q'),
+            'port'     => env('21'),
+            'root' => env('/'),
+            'ssl'      => env('FTP_SSL', false),
+            'timeout'  => env('FTP_TIMEOUT', 30)
+        ],
+
     ],
 
     /*

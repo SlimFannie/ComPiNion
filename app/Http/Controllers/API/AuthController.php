@@ -4,7 +4,7 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 
-use App\Http\Controllers\API\DataController as DataController;
+use App\Http\Controllers\API\DataController;
 use App\Http\Controllers\User;
 
 use Illuminate\Support\Facades\Auth;
@@ -64,17 +64,6 @@ class AuthController extends DataController
         }
 
         return $this->sendResponse(new UserResource($user), 'L\'utilisateur trouvé avec succès.');
-    }
-
-    public function users() {
-        $users = User::all();
-
-        return $this->sendResponse($users, 'Les utilisateurs ont été trouvés avec succès.');
-    }
-
-    public function merit($id) {
-        $user = user($id);
-        
     }
 
     // Logout the user
