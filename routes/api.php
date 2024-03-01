@@ -25,7 +25,6 @@ Route::post('register', [AuthController::class, 'register'])->name('register');
 // Login
 Route::post('login', [AuthController::class, 'login'])->name('login');
 
-
     // Usager logged in
     Route::get('user/{id}', [AuthController::class, 'user'])->name('user');
     

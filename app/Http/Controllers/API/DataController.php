@@ -16,7 +16,7 @@ class DataController extends Controller
     public function sendResponse($result, $message) {
         $response = [
             'success' => true,
-            'data' => $result,
+            'users' => $result,
             'message' => $message,
         ];
 
