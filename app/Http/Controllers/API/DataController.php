@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 
@@ -16,7 +16,7 @@ class DataController extends Controller
     public function sendResponse($result, $message) {
         $response = [
             'success' => true,
-            'data' => $result,
+            'users' => $result,
             'message' => $message,
         ];
 

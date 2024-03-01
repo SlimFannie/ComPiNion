@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
-use App\Htpp\Controllers\DataController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,11 +37,4 @@ use App\Htpp\Controllers\DataController;
 
     //Deconnexion
     Route::get('logout', [UsersController::class, 'logout'])->name('logout');
-
-//Routes pour l'application
-    $router->get('data', 'DataController@index');
-    $router->post('data', 'DataController@store');
-    $router->get('data/{id}', 'DataController@show');
-    $router->put('data/{id}', 'DataController@update');
-    $router->delete('data/{id}', 'DataController@destroy');
 
