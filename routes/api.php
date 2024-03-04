@@ -40,3 +40,9 @@ Route::post('login', [AuthController::class, 'login'])->name('login');
     // Suppression du compte
     Route::delete('compinion/{id}', [AppUserController::class, 'destroy'])->name('destroy');
 
+// Characters
+    
+    //Envoyer la liste des personnages pour l'écran de selection 
+        
+    // Tous les usagers
+    Route::get('showAllCharacters', [AppUserController::class, 'showAllCharacters'])->name('showAllCharacters');
