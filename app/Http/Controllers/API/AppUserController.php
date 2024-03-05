@@ -19,8 +19,12 @@ class AppUserController extends DataController
     }
 
     public function showAllCharacters() {
-        $characters = Character::all();
+        $characters = Character::all()->map(function ($character) {
+            $character->img_url = asset('img/' . $character->img);
+            return $character;
+        });
 
         return $this->sendResponse($characters, 'Les personnages ont été trouvés avec succès.');
     }
+
 }
