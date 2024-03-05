@@ -48,12 +48,9 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
 
-    public function user1() {
+    public function amis() {
         return $this->belongsTo(User::class, 'id');
     }
 
-    public function user2() {
-        return $this->belongsTo(User::class, 'id');
-    }
 
 }
