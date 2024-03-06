@@ -36,6 +36,7 @@ class UsersSeeder extends Seeder
             'admin' => true,
             'email' => 'fhamelthibault@hotmail.com',
             'password' => Hash::make('Password123'),
+            'character_id' => 1,
             ],
             [
             'nom' => 'Aidoun',
@@ -44,6 +45,7 @@ class UsersSeeder extends Seeder
             'admin' => true,
             'email' => 'culmarde@hotmail.com',
             'password' => Hash::make('Password123'),
+            'character_id' => 2,
             ],
             [
             'nom' => 'Leao-Belzile',
@@ -52,6 +54,7 @@ class UsersSeeder extends Seeder
             'admin' => false,
             'email' => 'ok@hotmail.com',
             'password' => Hash::make('Password123'),
+            'character_id' => 3,
             ],
             [
             'nom' => 'Des Ruisseaux',
@@ -60,6 +63,7 @@ class UsersSeeder extends Seeder
             'admin' => false,
             'email' => 'woopdidoo@hotmail.com',
             'password' => Hash::make('Password123'),
+            'character_id' => 4,
             ]
         ]);
     }

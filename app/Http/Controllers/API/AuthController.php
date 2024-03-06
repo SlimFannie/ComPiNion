@@ -5,10 +5,10 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\API\DataController;
-use App\Http\Controllers\User;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 use Validator;
 use App\Http\Resources\User as UserResource;
 
@@ -23,7 +23,6 @@ class AuthController extends DataController
             'pseudo' => 'required',
             'email' => 'required|email',
             'password' => 'required',
-            'c_password' => 'required|same:password'
         ]);
 
         if($validator->fails()) {
@@ -57,7 +56,7 @@ class AuthController extends DataController
 
     // Get the authenticated user
     public function user($id) { 
-        $user = User::find($id);
+        $user = User::findOrFail($id);
 
         if(is_null($user)) {
             return $this->sendError('Cet utilisateur n\'existe pas.');

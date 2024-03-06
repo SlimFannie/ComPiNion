@@ -31,6 +31,9 @@ Route::post('login', [AuthController::class, 'login'])->name('login');
     // Tous les usagers
     Route::get('users', [AppUserController::class, 'users'])->name('users');
 
+    // Tous les amis
+    Route::get('user/{id}/amis', [AppUserController::class, 'amis'])->name('amis');
+
     // Logout
     Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
