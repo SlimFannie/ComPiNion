@@ -23,6 +23,7 @@ return new class extends Migration
             $table->foreignId('character_id')->constrained();
             $table->integer('jours')->default(0);
             $table->integer('merite')->default(0);
+            $table->integer('limite');
             $table->rememberToken();
             $table->timestamps();
         });
