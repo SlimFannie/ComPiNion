@@ -5,7 +5,7 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\API\DataController;
-use App\Http\Controllers\User;
+use App\Models\User;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -23,7 +23,6 @@ class AuthController extends DataController
             'pseudo' => 'required',
             'email' => 'required|email',
             'password' => 'required',
-            'c_password' => 'required|same:password'
         ]);
 
         if($validator->fails()) {
