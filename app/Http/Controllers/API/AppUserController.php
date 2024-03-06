@@ -29,11 +29,19 @@ class AppUserController extends DataController
     }
     
     public function amis($id) {
-        $relation = Relation::where(['user1_id' => $id, 'relation' => 'friend'])
-                            ->orWhere(['user2_id' => $id, 'relation' => 'friend'])
-                            ->get();
-        
+
+        $relation = Relation::where([
+                ['user1_id', '=', $id],
+                ['relation', '=', 'friend']
+        ])
+        ->orWhere([
+            ['user2_id', '=', $id],
+            ['relation', '=', 'friend']
+        ])
+        ->get();
+
         return $this->sendResponse($relation, 'Les amis ont été trouvés avec succès.');
+
     }
 
 }
