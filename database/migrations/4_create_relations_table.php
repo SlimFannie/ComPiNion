@@ -12,11 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('relations', function (Blueprint $table) {
-            $table->id()->autoIncrement();
             $table->unsignedBigInteger('user1_id');
             $table->unsignedBigInteger('user2_id');
             $table->enum('relation', ['friend', 'blocked']);
             $table->timestamps();
+
+            $table->primary(array('user1_id', 'user2_id'));
 
             // Add foreign key constraints
             $table->foreign('user1_id')->references('id')->on('users')->onDelete('cascade');

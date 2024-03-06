@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\API\DataController;
 use App\Models\User;
 use App\Models\Character;
+use App\Models\Relation;
 use Validator;
 use App\Http\Resources\User as UserResource;
 
@@ -25,6 +26,14 @@ class AppUserController extends DataController
         });
 
         return $this->sendResponse($characters, 'Les personnages ont été trouvés avec succès.');
+    }
+    
+    public function amis($id) {
+        $relation = Relation::where(['user1_id' => $id, 'relation' => 'friend'])
+                            ->orWhere(['user2_id' => $id, 'relation' => 'friend'])
+                            ->get();
+        
+        return $this->sendResponse($relation, 'Les amis ont été trouvés avec succès.');
     }
 
 }

@@ -9,6 +9,7 @@ use App\Models\User;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 use Validator;
 use App\Http\Resources\User as UserResource;
 
@@ -56,7 +57,7 @@ class AuthController extends DataController
 
     // Get the authenticated user
     public function user($id) { 
-        $user = User::find($id);
+        $user = User::findOrFail($id);
 
         if(is_null($user)) {
             return $this->sendError('Cet utilisateur n\'existe pas.');
