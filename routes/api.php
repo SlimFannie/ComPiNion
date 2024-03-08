@@ -29,7 +29,7 @@ Route::post('login', [AuthController::class, 'login'])->name('login');
     Route::get('user/{id}', [AuthController::class, 'user'])->name('user');
     
     // Tous les usagers
-    Route::get('users', [AppUserController::class, 'users'])->name('users');
+    Route::get('users/{id}', [AppUserController::class, 'users'])->name('users');
 
     // Tous les amis
     Route::get('user/{id}/amis', [AppUserController::class, 'amis'])->name('amis');
