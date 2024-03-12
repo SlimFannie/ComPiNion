@@ -20,12 +20,16 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->foreignId('character_id')->constrained();
+            $table->unsignedBigInteger('character_id');
+            $table->foreign('character_id')->references('id')->on('characters')->onDelete('cascade');
+            
             $table->integer('jours')->default(0);
             $table->integer('merite')->default(0);
             $table->integer('limite');
             $table->rememberToken();
             $table->timestamps();
+
+
         });
     }
 
