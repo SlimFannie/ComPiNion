@@ -51,6 +51,24 @@ class AppUserController extends DataController
 
     }
 
+    public function block($idUser, $idBlockedUser) {
+        $relation = new Relation;
+        $relation->user1_id = $idUser;
+        $relation->user2_id = $idBlockedUser;
+        $relation->relation = 'blocked';
+        $relation->save();
+    }
+
+    public function unblock($idUser, $idBlockedUser) {
+        $relation = Relation::where([
+            ['user1_id', '=', $idUser],
+            ['user2_id', '=', $idBlockedUser],
+            ['relation', '=', 'friend']
+        ])->get();
+
+        $relation->destroy();
+    }
+
     public function showAllCharacters() {
         $characters = Character::all()->map(function ($character) {
             $character->img_url = asset('img/' . $character->img);

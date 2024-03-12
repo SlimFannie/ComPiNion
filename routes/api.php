@@ -34,6 +34,12 @@ Route::post('login', [AuthController::class, 'login'])->name('login');
     // Tous les amis
     Route::get('user/{id}/amis', [AppUserController::class, 'amis'])->name('amis');
 
+    // Block
+    Route::post('user/{id1}/block/{id2}', [AppUserController::class, 'block'])->name('block');
+        
+        // Unblock
+        Route::delete('user/{id1}/unblock/{id2}', [AppUserController::class, 'unblock'])->name('unblock');
+
     // Logout
     Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 

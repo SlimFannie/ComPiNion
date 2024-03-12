@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('password');
             $table->foreignId('character_id')->constrained();
             $table->integer('jours')->default(0);
+            $table->integer('experience')->default(0);
             $table->integer('merite')->default(0);
             $table->integer('limite');
             $table->rememberToken();
