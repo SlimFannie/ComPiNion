@@ -6,10 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\API\DataController;
 use App\Models\User;
+use Illuminate\Http\Response;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use App\Models\User;
 use Validator;
 use App\Http\Resources\User as UserResource;
 
@@ -24,6 +24,8 @@ class AuthController extends DataController
             'pseudo' => 'required',
             'email' => 'required|email',
             'password' => 'required',
+            'character_id' => 'required',
+            'limite' => 'required',
         ]);
 
         if($validator->fails()) {
@@ -40,19 +42,24 @@ class AuthController extends DataController
     }
 
     // Login a user
-    public function login(Request $request) { 
-
-        if(Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            $user = Auth::user();
-            $success['token'] =  $user->createToken('ComPiNion')-> accessToken; 
-            $success['name'] =  $user->name;
-   
-            return $this->sendResponse($success, 'Vous vous êtes connecté avec succès.');
-        } 
-        else{ 
-            return $this->sendError('Accès non-authorisé.', ['error'=>'Unauthorised']);
-        } 
-
+    public function login(Request $request) {
+        // Récupérer l'utilisateur en fonction de l'email
+        $user = User::where('email', $request->email)->first();
+    
+        // Vérifier si l'utilisateur existe et que le mot de passe est correct
+        if ($user && Hash::check($request->password, $user->password)) {
+            // Construire la réponse avec les informations de l'utilisateur
+            $response = [
+                'user' => $user,
+                'token' => $user->createToken('ComPiNion')->accessToken,
+                'message' => 'Vous vous êtes connecté avec succès.'
+            ];
+            // Retourner une réponse HTTP 200 OK avec les données de l'utilisateur
+            return response()->json($response, Response::HTTP_OK);
+        } else {
+            // Retourner une réponse d'erreur si l'authentification échoue
+            return $this->sendError('Accès non-authorisé.', ['error' => 'Unauthorised'], Response::HTTP_UNAUTHORIZED);
+        }
     }
 
     // Get the authenticated user
