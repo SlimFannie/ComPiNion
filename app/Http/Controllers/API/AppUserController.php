@@ -29,7 +29,7 @@ class AppUserController extends DataController
 
         $blocked = array_merge($blocked, $blockedByUser2);
 
-        $users = $users->whereNotIn('id', $blocked);
+        $users = $users->whereNotIn('id', $blocked)->values();
 
         return $this->sendResponse($users, 'Les utilisateurs ont été trouvés avec succès.');
 
@@ -76,6 +76,11 @@ class AppUserController extends DataController
         });
 
         return $this->sendResponse($characters, 'Les personnages ont été trouvés avec succès.');
+    }
+
+    public function showCharacter($id) {
+        $character = Character::findOrFail($id)->get();
+        return $this->sendResponse($character, 'Le personnage a été trouvé avec succès.');
     }
 
 }

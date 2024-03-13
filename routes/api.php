@@ -55,3 +55,6 @@ Route::post('login', [AuthController::class, 'login'])->name('login');
         
     // Tous les usagers
     Route::get('showAllCharacters', [AppUserController::class, 'showAllCharacters'])->name('showAllCharacters');
+
+    // Un seul usager
+    Route::get('showCharacter/{id}', [AppUserController::class, 'showCharacter'])->name('showCharacter');
