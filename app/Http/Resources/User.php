@@ -21,6 +21,9 @@ class User extends JsonResource
             'pseudo' => $this->pseudo,
             'email' => $this->email,
             'password' =>$this->password,
+            'character_id' => $this->character_id,
+            'jours' => $this->jours,
+            'merite' => $this->merite
         ];
     }
 }
