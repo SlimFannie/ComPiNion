@@ -22,9 +22,7 @@ return new class extends Migration
             $table->string('password');
             $table->unsignedBigInteger('character_id');
             $table->foreign('character_id')->references('id')->on('characters')->onDelete('cascade');
-            
             $table->integer('jours')->default(0);
-            $table->integer('experience')->default(0);
             $table->integer('merite')->default(0);
             $table->integer('limite');
             $table->rememberToken();

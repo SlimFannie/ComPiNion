@@ -51,6 +51,24 @@ class AppUserController extends DataController
 
     }
 
+    public function befriend($idUser, $idFriendUser) {
+        $relation = new Relation;
+        $relation->user1_id = $idUser;
+        $relation->user2_id = $idFriendUser;
+        $relation->relation = 'friend';
+        $relation->save();
+    }
+
+    public function unfriend($idUser, $idFriendUser) {
+        $relation = Relation::where([
+            ['user1_id', '=', $idUser],
+            ['user2_id', '=', $idFriendUser],
+            ['relation', '=', 'friend']
+        ])->get();
+
+        $relation->destroy();
+    }
+
     public function block($idUser, $idBlockedUser) {
         $relation = new Relation;
         $relation->user1_id = $idUser;
@@ -63,7 +81,7 @@ class AppUserController extends DataController
         $relation = Relation::where([
             ['user1_id', '=', $idUser],
             ['user2_id', '=', $idBlockedUser],
-            ['relation', '=', 'friend']
+            ['relation', '=', 'blocked']
         ])->get();
 
         $relation->destroy();
@@ -81,6 +99,39 @@ class AppUserController extends DataController
     public function showCharacter($id) {
         $character = Character::findOrFail($id)->get();
         return $this->sendResponse($character, 'Le personnage a été trouvé avec succès.');
+    }
+
+    public function update(Request $request, $id) {
+        try {
+            $user = User::findOrFail($id);
+
+            $user->prenom = empty($request->prenom) ? $user->prenom : $request->prenom;
+            $user->nom = empty($request->nom) ? $user->nom : $request->nom;
+            $user->pseudo = empty($request->pseudo) ? $user->pseudo : $request->pseudo;
+            $user->email = empty($request->email) ? $user->email : $request->email;
+            $user->merite = empty($request->merite) ? $user->merite : $request->merite;
+            $user->jours = empty($request->jours) ? $user->jours : $request->jours;
+
+            $user->save();
+        }
+        catch(\Throwable $e) {
+            Log::debug($e);
+        }
+
+        return $this->sendResponse('Modification réussi.');
+    }
+
+    public function destroy($id) {
+        try{
+            $user = User::findOrFail($id);
+
+            $user->delete();
+        }
+        catch(\Throwable $e) {
+            Log::debug($e);
+        }
+
+        return $this->sendResponse('Suppression réussi.');
     }
 
 }

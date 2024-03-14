@@ -40,14 +40,20 @@ Route::post('login', [AuthController::class, 'login'])->name('login');
         // Unblock
         Route::delete('user/{id1}/unblock/{id2}', [AppUserController::class, 'unblock'])->name('unblock');
 
+    // Befriend
+    Route::post('user/{id1}/friend/{id2}', [AppUserController::class, 'befriend'])->name('befriend');
+
+        // Unfriend
+        Route::delete('user/{id1}/unfriend/{id2}', [AppUserController::class, 'unfriend'])->name('unfriend');
+
     // Logout
     Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
     // Modification compte
-    Route::patch('compinion/{id}', [AppUserController::class, 'update'])->name('update');
+    Route::patch('compinion/{id}/update', [AppUserController::class, 'update'])->name('update');
 
     // Suppression du compte
-    Route::delete('compinion/{id}', [AppUserController::class, 'destroy'])->name('destroy');
+    Route::delete('compinion/{id}/delete', [AppUserController::class, 'destroy'])->name('destroy');
 
 // Characters
     
