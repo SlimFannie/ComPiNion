@@ -67,6 +67,16 @@
                 <label for="password">Mot de passe: </label><br>
                 <input type="password" id="password" name="password" required>
             </div>
+            <div class="form-group mt-2">
+            <label for="character">Companion: </label><br>
+                <select id="character-select " name="character_id">                  
+                    <option value="1">Lapin</option>
+                    <option value="2">Chèvre</option>
+                    <option value="3">Poule</option>
+                    <option value="4">Singe</option>
+                </select>
+            </div>
+
         </div>
 
         <div class="modal-footer">

@@ -56,7 +56,9 @@ class UsersController extends Controller
             $user->prenom = $request->prenom;
             $user->email = $request->email;
             $user->password = $request->password;
-                    
+            $user->limite = 0;
+            $user->character_id = $request->input('character_id');
+
             $user->save();
         
             // Redirigez l'utilisateur vers une page de confirmation ou de succès
