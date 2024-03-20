@@ -323,4 +323,14 @@ class AppUserController extends DataController
         return $this->sendResponse('Suppression réussi.');
     }
 
+    public function getCompanion($id) { 
+        $character = Charachter::findOrFail($id);
+
+        if(is_null($character)) {
+            return $this->sendError('Ce character n\'existe pas.');
+        }
+
+        return $this->sendResponse(new UserResource($user), 'character trouvé avec succès.');
+    }
+
 }
