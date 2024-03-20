@@ -7,6 +7,9 @@
     use App\Models\User;
     use App\Models\Character;
     use App\Models\Relation;
+    use Illuminate\Support\Facades\Log;
+    use Hash;
+
     use Validator;
     use App\Http\Resources\User as UserResource;
     
@@ -193,6 +196,31 @@
                 $user->save();
         
                 return $this->sendResponse('Modification réussie.', 200); // Pass both message and status code
+            }
+            catch(\Throwable $e) {
+                Log::debug($e);
+                return $this->sendResponse('Une erreur est survenue.', 500); // You can handle error cases similarly
+            }
+        }
+        
+        public function updatePassword(Request $request, $id) {
+            try {
+                $user = User::findOrFail($id);
+        
+                // Check if the provided current password matches the user's current password
+                if (!Hash::check($request->current_password, $user->password)) {
+                    return $this->sendResponse('Mot de passe actuel incorrect.', 400); // Incorrect current password
+                    Log::debug("CURRENT PWD DOESNT MATCH" );
+
+                }
+        
+                // Update the user's password with the new hashed password
+                $user->password = Hash::make($request->new_password);
+        
+                Log::debug("WORKED" );
+                $user->save();
+        
+                return $this->sendResponse('Mot de passe mis à jour avec succès.', 200); // Password updated successfully
             }
             catch(\Throwable $e) {
                 Log::debug($e);
