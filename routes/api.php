@@ -50,7 +50,12 @@ Route::post('login', [AuthController::class, 'login'])->name('login');
     Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
     // Modification compte
-    Route::patch('compinion/{id}/update', [AppUserController::class, 'update'])->name('update');
+    Route::patch('compinion/{id}/update/prenom', [AppUserController::class, 'updateprenom'])->name('updateprenom');
+    Route::patch('compinion/{id}/update/nom', [AppUserController::class, 'updatenom'])->name('updatenom');
+    Route::patch('compinion/{id}/update/pseudo', [AppUserController::class, 'updatepseudo'])->name('updatepseudo');
+    Route::patch('compinion/{id}/update/email', [AppUserController::class, 'updateemail'])->name('updateemail');
+    Route::patch('compinion/{id}/update/merite', [AppUserController::class, 'updatemerite'])->name('updatemerite');
+    Route::patch('compinion/{id}/update/jours', [AppUserController::class, 'updatejours'])->name('updatejours');
 
     // Suppression du compte
     Route::delete('compinion/{id}/delete', [AppUserController::class, 'destroy'])->name('destroy');
