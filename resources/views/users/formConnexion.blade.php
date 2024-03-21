@@ -16,9 +16,16 @@
     <form method="POST" action="{{ route('users.connexion') }}">
     @csrf
     <h3>Connexion</h3>
+    <h2 id="errForm">
+      @if($errors->any())
+        {{$errors}}
+      @endif
+    </h2>
 
     <label for="email">Courriel: </label>
-    <input type="text" placeholder="Courriel" id="email" name="email">
+    <input type="email" placeholder="Courriel" id="email" name="email">
+    <p id=errEmail ></p>
+    
 
     <label for="password">Mot de passe: </label>
     <input type="password" placeholder="Mot de passe" id="password" name="password">
@@ -32,3 +39,4 @@
 </body>
 
 </html>
+<script src="{{ asset('js/connexion.js') }}"></script>
