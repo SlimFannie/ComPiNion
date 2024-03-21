@@ -15,7 +15,7 @@
 <body>
     <form method="POST" action="{{ route('users.connexion') }}">
     @csrf
-    <h3>Connexion</h3>
+    <h3>Connectad</h3>
 
     <label for="email">Courriel: </label>
     <input type="text" placeholder="Courriel" id="email" name="email">
