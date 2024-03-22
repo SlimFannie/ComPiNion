@@ -96,3 +96,8 @@ button {
     text-align: center;
     margin-top: 10px;
 }
+
+#errEmail, #errPass{
+  text-align: center;
+  color: #ff512f;
+}

@@ -16,15 +16,17 @@
     <form method="POST" action="{{ route('users.connexion') }}">
     @csrf
     <h3>Connexion</h3>
-    <p id="errEmail"></p>
+    
 
     <label for="email">Courriel: </label>
     <input type="email" placeholder="Courriel" id="email" name="email">
+    <p id="errEmail"></p>
 
     <label for="password">Mot de passe: </label>
     <input type="password" placeholder="Mot de passe" id="password" name="password">
+    <p id="errPass"></p>
 
-    <button type="submit">Log In</button>
+    <button type="submit" id="login">Log In</button>
     <div class="forgotPwd">
         <a href="" >Mot de passe oublie?</a>
     </div>
