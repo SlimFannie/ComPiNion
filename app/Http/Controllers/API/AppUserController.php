@@ -287,7 +287,7 @@
             try {
                 $user = User::find($id);
         
-                $chaineEnCours = $user->derniereChaine()->first();
+                $chaineEnCours = $user->derniereChaine;
         
                 return $this->sendResponse($chaineEnCours, 'Le personnage a été trouvé avec succès.');
         
