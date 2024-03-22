@@ -60,27 +60,15 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsTo(User::class, 'id');
     }
 
-    /**
-     * Mutateur pour la colonne 'jours'.
-     */
     public function getJoursAttribute()
     {
-        $chaineEnCours = $this->derniereChaine()->first();
-
-        $differenceJours = Carbon::parse($chaineEnCours->start_date)->diffInDays(Carbon::now());
-
-        return $differenceJours;
+        $chaineEnCours = $this->chaines()->whereNull('end_date')->first();
+        return Carbon::now()->diffInDays($chaineEnCours->start_date); 
     }
 
-
-    public function chaines(): HasMany
+    public function chaines()
     {
         return $this->hasMany(Chaine::class);
-    }
-
-    public function derniereChaine()
-    {
-        return $this->chaines()->whereNull('end_date')->latest()->first();
     }
 
 }

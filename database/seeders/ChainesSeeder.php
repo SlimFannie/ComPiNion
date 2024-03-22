@@ -36,6 +36,11 @@ class ChainesSeeder extends Seeder
                 'start_date'=> Carbon::createFromFormat('Y-m-d', '2024-03-21'),
                 'end_date'=>null
             ],
+            [  
+                'user_id'=>'4',
+                'start_date'=> Carbon::createFromFormat('Y-m-d', '2024-03-21'),
+                'end_date'=>null
+            ],
 
         ]);
     }
