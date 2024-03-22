@@ -44,18 +44,18 @@ class UsersController extends Controller
      */
     public function store(UserRequest $request)
     {
-       
+       $donneValider = $request->validate($request->rules(), $request->messages());
         try {
             
             // Créer une nouvelle instance du modèle RapportAccident et attribuer les valeurs
             $user = new User;
 
             // Enregistrer les autres champs du rapport d'accident
-            $user->pseudo = $request->pseudo;
-            $user->nom = $request->nom;
-            $user->prenom = $request->prenom;
-            $user->email = $request->email;
-            $user->password = $request->password;
+            $user->pseudo = $donneValider['pseudo'];
+            $user->nom = $donneValider['nom'];
+            $user->prenom = $donneValider['prenom'];
+            $user->email = $donneValider['email'];
+            $user->password = $donneValider['password'];
             $user->limite = 0;
             $user->character_id = $request->input('character_id');
 
