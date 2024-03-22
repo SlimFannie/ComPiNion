@@ -202,6 +202,31 @@
                 return $this->sendResponse('Une erreur est survenue.', 500); // You can handle error cases similarly
             }
         }
+
+        public function updatePassword(Request $request, $id) {
+            try {
+                $user = User::findOrFail($id);
+        
+                // Check if the provided current password matches the user's current password
+                if (!Hash::check($request->current_password, $user->password)) {
+                    return $this->sendResponse('Mot de passe actuel incorrect.', 400); // Incorrect current password
+                    Log::debug("CURRENT PWD DOESNT MATCH" );
+
+                }
+        
+                // Update the user's password with the new hashed password
+                $user->password = Hash::make($request->new_password);
+        
+                Log::debug("WORKED" );
+                $user->save();
+        
+                return $this->sendResponse('Mot de passe mis à jour avec succès.', 200); // Password updated successfully
+            }
+            catch(\Throwable $e) {
+                Log::debug($e);
+                return $this->sendResponse('Une erreur est survenue.', 500); // You can handle error cases similarly
+            }
+        }
         
         /* Méthodes relatives aux streaks */
         public function updatejours(Request $request, $id) {
@@ -242,31 +267,7 @@
             }
         }
         
-        public function updatePassword(Request $request, $id) {
-            try {
-                $user = User::findOrFail($id);
-        
-                // Check if the provided current password matches the user's current password
-                if (!Hash::check($request->current_password, $user->password)) {
-                    return $this->sendResponse('Mot de passe actuel incorrect.', 400); // Incorrect current password
-                    Log::debug("CURRENT PWD DOESNT MATCH" );
-
-                }
-        
-                // Update the user's password with the new hashed password
-                $user->password = Hash::make($request->new_password);
-        
-                Log::debug("WORKED" );
-                $user->save();
-        
-                return $this->sendResponse('Mot de passe mis à jour avec succès.', 200); // Password updated successfully
-            }
-            catch(\Throwable $e) {
-                Log::debug($e);
-                return $this->sendResponse('Une erreur est survenue.', 500); // You can handle error cases similarly
-            }
-        }
-        
+        // Supprimer l'utilisateur
     
         public function destroy($id) {
             try{

@@ -59,6 +59,21 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsTo(User::class, 'id');
     }
 
+    /**
+     * Mutateur pour la colonne 'jours'.
+     */
+    public function getJoursAttribute()
+    {
+        // Récupérez la différence entre les dates à partir de la relation 'chaines'
+        $differenceJours = $this->chaines()->sum(function ($chaine) {
+            // Calcul de la différence en jours entre 'start_date' et 'end_date'
+            return $chaine->start_date->diffInDays($chaine->end_date);
+        });
+
+        return $differenceJours;
+    }
+
+
     public function chaines(): HasMany
     {
         return $this->hasMany(Chaine::class);

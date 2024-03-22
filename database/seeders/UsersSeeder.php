@@ -37,7 +37,6 @@ class UsersSeeder extends Seeder
             'email' => 'fhamelthibault@hotmail.com',
             'password' => Hash::make('Password123'),
             'character_id' => 1,
-            'jours' => 2,
             'merite' =>5,
             'limite' => 1,
             ],
@@ -49,7 +48,6 @@ class UsersSeeder extends Seeder
             'email' => 'culmarde@hotmail.com',
             'password' => Hash::make('Password123'),
             'character_id' => 2,
-            'jours' => 1,
             'merite' =>6,
             'limite' => 3,
             ],
@@ -61,7 +59,6 @@ class UsersSeeder extends Seeder
             'email' => 'ok@hotmail.com',
             'password' => Hash::make('Password123'),
             'character_id' => 3,
-            'jours' => 3,
             'merite' =>2,
             'limite' => 2
             ],
@@ -73,7 +70,6 @@ class UsersSeeder extends Seeder
             'email' => 'woopdidoo@hotmail.com',
             'password' => Hash::make('Password123'),
             'character_id' => 4,
-            'jours' => 7,
             'merite' =>9,
             'limite' => 0,
             ]
