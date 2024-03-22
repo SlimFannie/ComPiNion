@@ -272,7 +272,7 @@
 
                 $user = User::find($id);
 
-                $chaines = $user->chaines()->values();
+                $chaines = $user->chaines()->get();
 
                 return $this->sendResponse($chaines, 'Le personnage a été trouvé avec succès.');
 
@@ -288,7 +288,7 @@
 
                 $user = User::find($id);
 
-                $chaineEnCours = $user->derniereChaine()->get();
+                $chaineEnCours = $user->derniereChaine();
 
                 return $this->sendResponse($chaineEnCours, 'Le personnage a été trouvé avec succès.');;
 
