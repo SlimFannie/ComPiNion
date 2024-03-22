@@ -274,7 +274,7 @@
 
                 $chaines = $user->chaines()->values();
 
-                return $chaines;
+                return $this->sendResponse($chaines, 'Le personnage a été trouvé avec succès.');
 
             }
             catch(\Throwable $e) {
@@ -288,9 +288,9 @@
 
                 $user = User::find($id);
 
-                $chaineEnCours = $user->derniereChaine();
+                $chaineEnCours = $user->derniereChaine()->get();
 
-                return $chaineEnCours;
+                return $this->sendResponse($chaineEnCours, 'Le personnage a été trouvé avec succès.');;
 
             }
             catch(\Throwable $e) {
