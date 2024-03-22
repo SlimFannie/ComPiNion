@@ -68,7 +68,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function chaines()
     {
-        return $this->hasMany(Chaine::class);
+        return $this->hasMany(Chaine::class, 'user_id');
     }
 
 }
