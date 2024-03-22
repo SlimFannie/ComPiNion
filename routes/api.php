@@ -50,22 +50,22 @@ Route::post('login', [AuthController::class, 'login'])->name('login');
     Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
     // Modification compte
-    Route::patch('compinion/{id}/update/prenom', [AppUserController::class, 'updateprenom'])->name('updateprenom');
-    Route::patch('compinion/{id}/update/nom', [AppUserController::class, 'updatenom'])->name('updatenom');
-    Route::patch('compinion/{id}/update/pseudo', [AppUserController::class, 'updatepseudo'])->name('updatepseudo');
-    Route::patch('compinion/{id}/update/email', [AppUserController::class, 'updateemail'])->name('updateemail');
-    Route::patch('compinion/{id}/update/merite', [AppUserController::class, 'updatemerite'])->name('updatemerite');
-    Route::patch('compinion/{id}/update/jours', [AppUserController::class, 'updatejours'])->name('updatejours');
-    Route::patch('compinion/{id}/update/password', [AppUserController::class, 'updatePassword'])->name('updatePassword');
-    Route::patch('compinion/{id}/update/limite', [AppUserController::class, 'updatelimite'])->name('updatelimite');
+    Route::patch('user/{id}/update/prenom', [AppUserController::class, 'updateprenom'])->name('updateprenom');
+    Route::patch('user/{id}/update/nom', [AppUserController::class, 'updatenom'])->name('updatenom');
+    Route::patch('user/{id}/update/pseudo', [AppUserController::class, 'updatepseudo'])->name('updatepseudo');
+    Route::patch('user/{id}/update/email', [AppUserController::class, 'updateemail'])->name('updateemail');
+    Route::patch('user/{id}/update/merite', [AppUserController::class, 'updatemerite'])->name('updatemerite');
+    Route::patch('user/{id}/update/jours', [AppUserController::class, 'updatejours'])->name('updatejours');
+    Route::patch('user/{id}/update/password', [AppUserController::class, 'updatePassword'])->name('updatePassword');
+    Route::patch('user/{id}/update/limite', [AppUserController::class, 'updatelimite'])->name('updatelimite');
 
     // Streak
-    Route::post('compinion/{id}/update/endstreak', [AppUserController::class, 'endStreak'])->name('endStreak');
-    Route::get('compinion/{id}/streaks', [AppUserController::class, 'getStreaks'])->name('getStreaks');
-    Route::get('compinion/{id}/streak', [AppUserController::class, 'getStreak'])->name('getStreak');
+    Route::post('user/{id}/update/endstreak', [AppUserController::class, 'endStreak'])->name('endStreak');
+    Route::get('user/{id}/streaks', [AppUserController::class, 'getStreaks'])->name('getStreaks');
+    Route::get('user/{id}/streak', [AppUserController::class, 'getStreak'])->name('getStreak');
 
     // Suppression du compte
-    Route::delete('compinion/{id}/delete', [AppUserController::class, 'destroy'])->name('destroy');
+    Route::delete('user/{id}/delete', [AppUserController::class, 'destroy'])->name('destroy');
 
 // Characters
     
