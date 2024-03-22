@@ -45,6 +45,13 @@
         </div>
 
         <div class="modal-body">
+            @if($errors->any())
+                <div class="alert alert-danger">
+                    @foreach($errors->all() as $error)
+                        <p>{{ $error }}</p>
+                    @endforeach
+                </div>
+            @endif
             <form method="POST" action="{{ route('users.store') }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group mt-2">

@@ -42,7 +42,7 @@ class UsersController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
        
         try {
@@ -64,7 +64,7 @@ class UsersController extends Controller
             // Redirigez l'utilisateur vers une page de confirmation ou de succès
             } catch (\Throwable $e) {
                 Log::debug($e);
-                return redirect()->back()->withErrors(["La création a échoué"]);
+                return redirect()->back();
             }
         
         return redirect()->route('users.accueil');
@@ -133,7 +133,7 @@ class UsersController extends Controller
             }
         } catch (\Throwable $e) {
             Log::error($e);
-            return redirect()->back()->withErrors(['error' => 'La modification du mot de passe a échoué.']);
+            return redirect()->back()->withErrors(['error' => 'Les informations d\'identifications sont incorrects.']);
     }
 
     }
