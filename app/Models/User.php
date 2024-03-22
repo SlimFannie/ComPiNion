@@ -64,11 +64,9 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function getJoursAttribute()
     {
-        // Récupérez la différence entre les dates à partir de la relation 'chaines'
-        $differenceJours = $this->chaines()->sum(function ($chaine) {
-            // Calcul de la différence en jours entre 'start_date' et 'end_date'
-            return $chaine->start_date->diffInDays($chaine->end_date);
-        });
+        $chaineEnCours = $this->chaines()->whereNull('end_date')->first();
+
+        $differenceJours = Carbon::parse($chaineEnCours->start_date)->diffInDays(Carbon::now());
 
         return $differenceJours;
     }
