@@ -131,9 +131,9 @@ class UsersController extends Controller
                 return redirect()->route('users.formConnexion')->withErrors(['email' => 'Les informations d\'identification sont incorrectes. Veuillez réessayer.']);
 
             }
-    } catch (\Throwable $e) {
-        Log::error($e);
-        return redirect()->back()->withErrors(['error' => 'La modification du mot de passe a échoué.']);
+        } catch (\Throwable $e) {
+            Log::error($e);
+            return redirect()->back()->withErrors(['error' => 'La modification du mot de passe a échoué.']);
     }
 
     }

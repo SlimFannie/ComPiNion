@@ -50,14 +50,17 @@
             <div class="form-group mt-2">
                 <label for="pseudo">Pseudo: </label><br>
                 <input type="text" id="pseudo" name="pseudo" required>
+                <p id="errPseudo"></p>
             </div>
             <div class="form-group mt-2">
                 <label for="nom">Nom: </label><br>
                 <input type="text" id="nom" name="nom" required>
+                <p id="errNom"></p>
             </div>
             <div class="form-group mt-2">
                 <label for="prenom">Prénom: </label><br>
                 <input type="text" id="prenom" name="prenom" required>
+                <p id="errPrenom"></p>
             </div>
             <div class="form-group mt-2">
                 <label for="email">Courriel: </label><br>
@@ -66,6 +69,7 @@
             <div class="form-group mt-2">
                 <label for="password">Mot de passe: </label><br>
                 <input type="password" id="password" name="password" required>
+                <p id="errPassword"></p>
             </div>
             <div class="form-group mt-2">
             <label for="character">Companion: </label><br>
