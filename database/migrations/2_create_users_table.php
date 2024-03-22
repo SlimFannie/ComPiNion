@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id()->autoIncrement();
             $table->string('nom');
             $table->string('prenom');
-            $table->string('pseudo');
+            $table->string('pseudo', 14);
             $table->boolean('admin')->default(false);
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
