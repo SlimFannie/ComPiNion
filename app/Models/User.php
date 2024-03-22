@@ -62,12 +62,18 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function getJoursAttribute()
     {
-        $chaineEnCours = $this->chaines()->whereNull('end_date')->first()->toArray();
-        
+        $chaineEnCours = $this->chaines()->whereNull('end_date')->first();
+    
+        // Vérifier si une chaine en cours a été trouvée
         if ($chaineEnCours) {
-            return Carbon::now()->diffInDays($chaineEnCours->start_date); 
+            // Récupérer la date de début de la chaine en cours
+            $startDate = $chaineEnCours->start_date;
+            
+            // Calculer la différence en jours entre la date de début et la date actuelle
+            return Carbon::parse($startDate)->diffInDays(Carbon::now()); 
         }
         
+        // Retourner 0 si aucune chaine en cours n'est trouvée
         return 0;
     }
     public function chaines()
