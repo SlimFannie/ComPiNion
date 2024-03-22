@@ -266,6 +266,38 @@
                 return $this->sendResponse('Une erreur est survenue.', 500); // You can handle error cases similarly
             }
         }
+
+        public function getStreaks($id) {
+            try {
+
+                $user = User::find($id);
+
+                $chaines = $user->chaines()->values();
+
+                return $chaines;
+
+            }
+            catch(\Throwable $e) {
+                Log::debug($e);
+                return $this->sendResponse('Une erreur est survenue.', 500); // You can handle error cases similarly
+            }
+        }
+
+        public function getStreak($id) {
+            try {
+
+                $user = User::find($id);
+
+                $chaineEnCours = $user->derniereChaine();
+
+                return $chaineEnCours;
+
+            }
+            catch(\Throwable $e) {
+                Log::debug($e);
+                return $this->sendResponse('Une erreur est survenue.', 500); // You can handle error cases similarly
+            }
+        }
         
         // Supprimer l'utilisateur
     
