@@ -9,7 +9,7 @@ let inputEmail = document.getElementById("email");
 let errEmail = document.getElementById("errEmail");
 let estBon = true;
 
-let inputPassword = document.getElementById("Password");
+let inputPassword = document.getElementById("password");
 let errPassword = document.getElementById("errPass");
 
 inputEmail.addEventListener("keyup", function(){
