@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\API\DataController;
 use App\Models\User;
-use App\Models\Compinion;
+use App\Models\Character;
 use Illuminate\Http\Response;
 
 use Illuminate\Support\Facades\Auth;
@@ -51,7 +51,7 @@ class AuthController extends DataController
         if ($user && Hash::check($request->password, $user->password)) {
             // Construire la réponse avec les informations de l'utilisateur
 
-            $nomCompinion = Compinion::find($user->character_id)->get('name');
+            $nomCompinion = Character::find($user->character_id)->get('name');
 
             $response = [
                 'user' => $user,
