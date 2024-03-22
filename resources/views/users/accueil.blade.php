@@ -138,6 +138,7 @@
     </div>
     
     <script src="{{ asset('js/accueil.js') }}"></script>
+    <script src="{{asset('js/connexion.js') }}"></script>
 
 </body>
 
