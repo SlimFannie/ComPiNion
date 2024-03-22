@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\API\DataController;
 use App\Models\User;
+use App\Models\Compinion;
 use Illuminate\Http\Response;
 
 use Illuminate\Support\Facades\Auth;
