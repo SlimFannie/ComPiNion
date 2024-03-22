@@ -64,8 +64,8 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         $chaineEnCours = $this->chaines()->whereNull('end_date')->first();
         
-        // Ajouter une instruction de débogage
-        dd($chaineEnCours);
+        // Ajoutez une instruction de débogage pour vérifier les attributs spécifiques
+        dd($chaineEnCours->toArray());
         
         if ($chaineEnCours) {
             return Carbon::now()->diffInDays($chaineEnCours->start_date); 
