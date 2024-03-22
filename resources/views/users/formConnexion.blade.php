@@ -16,6 +16,11 @@
     <form method="POST" action="{{ route('users.connexion') }}">
     @csrf
     <h3>Connexion</h3>
+    @if($errors->any())
+      <div class="alert alert-danger">
+        {{ $errors->first('email') }}
+      </div>
+    @endif
     
 
     <label for="email">Courriel: </label>

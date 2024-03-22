@@ -24,6 +24,9 @@ inputEmail.addEventListener("keyup", function(){
 
 inputPassword.addEventListener("keyup", function(){
     if(inputPassword.value == ""){
-        errPassword.textContent("Erreur: Veuillez entrer un mot de passe")
+        errPassword.textContent = "Erreur: Veuillez entrer un mot de passe";
     }
-})
+    else{
+        errPassword.textContent = "";
+    }
+});
