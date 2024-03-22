@@ -65,7 +65,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function getJoursAttribute()
     {
-        $chaineEnCours = $this->derniereChaine();
+        $chaineEnCours = $this->derniereChaine()->first();
 
         $differenceJours = Carbon::parse($chaineEnCours->start_date)->diffInDays(Carbon::now());
 
