@@ -81,4 +81,14 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Chaine::class, 'user_id');
     }
 
+    public function derniereChaine()
+    {
+
+        return $this->hasMany(Chaine::class)
+                    ->whereNull('end_date')
+                    ->latest()
+                    ->limit(1);
+                    
+    }
+
 }
