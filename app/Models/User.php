@@ -78,8 +78,9 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Chaine::class);
     }
 
-    public function derniereChaine(): HasOne {
-        return $this->hasOne(Chaine::class)->latest()->whereNull('end_date');
+    public function derniereChaine()
+    {
+        return $this->chaines()->whereNull('end_date')->latest()->first();
     }
 
 }
