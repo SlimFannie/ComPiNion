@@ -62,7 +62,7 @@ Route::post('login', [AuthController::class, 'login'])->name('login');
     // Streak
     Route::post('user/{id}/update/endstreak', [AppUserController::class, 'endStreak'])->name('endStreak');
     Route::get('user/{id}/streaks', [AppUserController::class, 'getStreaks'])->name('getStreaks');
-    Route::get('user/{id}/streak', [AppUserController::class, 'getStreak'])->name('getStreak');
+    Route::get('user/{id}/streak', [AppUserController::class, 'getStreak']);
 
     // Suppression du compte
     Route::delete('user/{id}/delete', [AppUserController::class, 'destroy'])->name('destroy');
