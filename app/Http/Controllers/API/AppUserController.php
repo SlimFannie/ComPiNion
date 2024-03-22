@@ -186,7 +186,24 @@
                 return $this->sendResponse('Une erreur est survenue.', 500); // You can handle error cases similarly
             }
         }
+
+        public function updatelimite(Request $request, $id) {
+            try {
+                $user = User::findOrFail($id);
         
+                $user->limite = empty($request->limite) ? $user->limite : $request->limite;
+        
+                $user->save();
+        
+                return $this->sendResponse('Modification réussie.', 200); // Pass both message and status code
+            }
+            catch(\Throwable $e) {
+                Log::debug($e);
+                return $this->sendResponse('Une erreur est survenue.', 500); // You can handle error cases similarly
+            }
+        }
+        
+        /* Méthodes relatives aux streaks */
         public function updatejours(Request $request, $id) {
             try {
                 $user = User::findOrFail($id);
@@ -195,6 +212,28 @@
         
                 $user->save();
         
+                return $this->sendResponse('Modification réussie.', 200); // Pass both message and status code
+            }
+            catch(\Throwable $e) {
+                Log::debug($e);
+                return $this->sendResponse('Une erreur est survenue.', 500); // You can handle error cases similarly
+            }
+        }
+
+        public function endstreak($id) {
+            try {
+
+                $user = User::find($id);
+
+                $chaineEnCours = $user->derniereChaine();
+                $chaineEnCours->end_date = now();
+                $chaineEnCours->save();
+
+                $nouvelleChaine = new Chaine();
+                $nouvelleChaine->user_id = $user->id;
+                $nouvelleChaine->start_date = now(); 
+                $nouvelleChaine->save();
+
                 return $this->sendResponse('Modification réussie.', 200); // Pass both message and status code
             }
             catch(\Throwable $e) {

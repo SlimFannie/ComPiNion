@@ -9,6 +9,8 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 
 class User extends Authenticatable implements MustVerifyEmail
@@ -57,5 +59,13 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsTo(User::class, 'id');
     }
 
+    public function chaines(): HasMany
+    {
+        return $this->hasMany(Chaine::class);
+    }
+
+    public function derniereChaine(): HasOne {
+        return $this->chaines()->where('end_date', null)->first();
+    }
 
 }

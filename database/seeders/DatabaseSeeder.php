@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CharactersSeeder::class);
         $this->call(UsersSeeder::class);
         $this->call(RelationsSeeder::class);
+        $this->call(ChainesSeeder::class);
     }
 }

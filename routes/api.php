@@ -28,7 +28,7 @@ Route::post('login', [AuthController::class, 'login'])->name('login');
     // Usager logged in
     Route::get('user/{id}', [AuthController::class, 'user'])->name('user');
     
-    // Tous les usagers
+// Tous les usagers
     Route::get('users/{id}', [AppUserController::class, 'users'])->name('users');
 
     // Tous les amis
@@ -57,6 +57,10 @@ Route::post('login', [AuthController::class, 'login'])->name('login');
     Route::patch('compinion/{id}/update/merite', [AppUserController::class, 'updatemerite'])->name('updatemerite');
     Route::patch('compinion/{id}/update/jours', [AppUserController::class, 'updatejours'])->name('updatejours');
     Route::patch('compinion/{id}/update/password', [AppUserController::class, 'updatePassword'])->name('updatePassword');
+    Route::patch('compinion/{id}/update/limite', [AppUserController::class, 'updatelimite'])->name('updatelimite');
+
+        // Streak
+        Route::patch('compinion/{id}/update/endstreak', [AppUserController::class, 'endStreak'])->name('endStreak');
 
     // Suppression du compte
     Route::delete('compinion/{id}/delete', [AppUserController::class, 'destroy'])->name('destroy');

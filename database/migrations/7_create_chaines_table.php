@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('chaines', function (Blueprint $table) {
             $table->id()->autoIncrement();
             $table->foreignId('user_id')->constrained();
-            $table->integer('jours');
+            $table->date('start_date');
+            $table->date('end_date')->nullable();
             $table->timestamps();
         });
     }
