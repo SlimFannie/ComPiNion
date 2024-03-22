@@ -49,10 +49,14 @@ class AuthController extends DataController
         // Vérifier si l'utilisateur existe et que le mot de passe est correct
         if ($user && Hash::check($request->password, $user->password)) {
             // Construire la réponse avec les informations de l'utilisateur
+
+            $nomCompinion = Compinion::find($user->character_id)->get('name');
+
             $response = [
                 'user' => $user,
                 'token' => $user->createToken('ComPiNion')->accessToken,
-                'message' => 'Vous vous êtes connecté avec succès.'
+                'message' => 'Vous vous êtes connecté avec succès.',
+                'nom' => $nomCompinion
             ];
             // Retourner une réponse HTTP 200 OK avec les données de l'utilisateur
             return response()->json($response, Response::HTTP_OK);
