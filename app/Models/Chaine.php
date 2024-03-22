@@ -9,6 +9,10 @@ class Chaine extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'end_date',
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
