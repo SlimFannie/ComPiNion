@@ -290,7 +290,7 @@
 
                 $chaineEnCours = $user->derniereChaine();
 
-                return $this->sendResponse($chaineEnCours, 'Le personnage a été trouvé avec succès.');;
+                return $this->sendResponse([$chaineEnCours], 'Le personnage a été trouvé avec succès.');;
 
             }
             catch(\Throwable $e) {
