@@ -59,8 +59,10 @@ Route::post('login', [AuthController::class, 'login'])->name('login');
     Route::patch('compinion/{id}/update/password', [AppUserController::class, 'updatePassword'])->name('updatePassword');
     Route::patch('compinion/{id}/update/limite', [AppUserController::class, 'updatelimite'])->name('updatelimite');
 
-        // Streak
-        Route::post('compinion/{id}/update/endstreak', [AppUserController::class, 'endStreak'])->name('endStreak');
+    // Streak
+    Route::post('compinion/{id}/update/endstreak', [AppUserController::class, 'endStreak'])->name('endStreak');
+    Route::get('compinion/{id}/streaks', [AppUserController::class, 'getStreaks'])->name('getStreaks');
+    Route::get('compinion/{id}/streak', [AppUserController::class, 'getStreak'])->name('getStreak');
 
     // Suppression du compte
     Route::delete('compinion/{id}/delete', [AppUserController::class, 'destroy'])->name('destroy');
