@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Http\Controllers\API\DataController;
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Character;
 
 class CharacterController extends Controller
 {
