@@ -96,4 +96,11 @@ class User extends Authenticatable implements MustVerifyEmail
                     
     }
 
+    // Un utilisateur a un compinion
+
+    public function character()
+    {
+        return $this->belongsTo(Character::class);
+    }
+
 }
