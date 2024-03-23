@@ -56,6 +56,17 @@
             return $this->sendResponse($relation, 'Les amis ont été trouvés avec succès.');
     
         }
+
+        public function blocked($id) {
+    
+            $relation = Relation::where([
+                    ['user2_id', '=', $id],
+                    ['relation', '=', 'blocked']
+            ])->get();
+    
+            return $this->sendResponse($relation, 'Les amis ont été trouvés avec succès.');
+    
+        }
     
         //Relations - POST/Destroy
         public function befriend($idUser, $idFriendUser) {

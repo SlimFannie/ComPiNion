@@ -35,6 +35,9 @@ Route::post('login', [AuthController::class, 'login'])->name('login');
     // Tous les amis
     Route::get('user/{id}/amis', [AppUserController::class, 'amis'])->name('amis');
 
+    // Tous les indésirables
+    Route::get('user/{id}/blocked', [AppUserController::class, 'blocked'])->name('blocked');
+
     // Block
     Route::post('user/{id1}/block/{id2}', [AppUserController::class, 'block'])->name('block');
         
