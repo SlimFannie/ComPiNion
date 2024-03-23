@@ -21,7 +21,7 @@ class CharacterController extends Controller
 
     //GET - Compinion de l'usager
     public function showCharacter($id) {
-        $character = Character::find($id);
+        $character = Character::find($id)->get();
         return $this->sendResponse($character, 'Le personnage a été trouvé avec succès.');
     }
 
