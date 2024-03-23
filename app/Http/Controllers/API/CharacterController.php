@@ -29,7 +29,7 @@ class CharacterController extends DataController
         $user = User::find($id);
         $character = $user->character;
 
-        return $this->sendResponse($character, 'Le personnage a été trouvé avec succès.');
+        return $this->sendResponse([$character], 'Le personnage a été trouvé avec succès.');
     }
 
 }
