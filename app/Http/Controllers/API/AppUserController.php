@@ -63,7 +63,7 @@
 
             $users = User::whereIn('id', $amis)->get();
     
-            return $this->sendResponse($relation, 'Les amis ont été trouvés avec succès.');
+            return $this->sendResponse($users, 'Les amis ont été trouvés avec succès.');
     
         }
     
