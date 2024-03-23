@@ -43,21 +43,25 @@
         
         public function amis($id) {
     
-            $relation = Relation::where([
-                    ['user1_id', '=', $id],
-                    ['relation', '=', 'friend']
-            ])->get();
-    
-            return $this->sendResponse($relation, 'Les amis ont été trouvés avec succès.');
+            $amis = Relation::where([
+                ['user1_id', '=', $id],
+                ['relation', '=', 'friend']
+            ])->pluck('user2_id');
+
+            $users = User::whereIn('id', $amis)->get();
+
+            return $this->sendResponse($users, 'Les amis ont été trouvés avec succès.');
     
         }
 
         public function blocked($id) {
     
-            $relation = Relation::where([
-                    ['user1_id', '=', $id],
-                    ['relation', '=', 'blocked']
-            ])->get();
+            $amis = Relation::where([
+                ['user1_id', '=', $id],
+                ['relation', '=', 'blocked']
+            ])->pluck('user2_id');
+
+            $users = User::whereIn('id', $amis)->get();
     
             return $this->sendResponse($relation, 'Les amis ont été trouvés avec succès.');
     
