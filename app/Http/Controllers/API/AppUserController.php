@@ -271,7 +271,11 @@
 
                 $user = User::find($id);
 
+                // Assurez-vous que $chaines est toujours un tableau
                 $chaines = $user->chaines()->values();
+                if (!is_array($chaines)) {
+                    $chaines = [$chaines];
+                }
 
                 return $this->sendResponse($chaines, 'Le personnage a été trouvé avec succès.');
 
