@@ -16,19 +16,19 @@ class CharactersSeeder extends Seeder
         DB::table('characters')->insert([
             [  
                 'name'=>'rabbit',
-                'img'=>'ch_rabbit.png'
+                'img'=>'https://i.imgur.com/IEYGHwr.png'
             ],
             [  
                 'name'=>'goat',
-                'img'=>'ch_goat.png'
+                'img'=>'https://imgur.com/d1XmUwm.png'
             ],
             [  
                 'name'=>'chicken',
-                'img'=>'ch_chicken.png'
+                'img'=>'https://imgur.com/HTPjQH1.png'
             ],
             [  
                 'name'=>'monkey',
-                'img'=>'ch_monkey.png'
+                'img'=>'https://imgur.com/HgrM7Ci.png'
             ],
 
         ]);
