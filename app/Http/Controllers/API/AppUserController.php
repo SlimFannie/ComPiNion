@@ -66,6 +66,17 @@
             return $this->sendResponse($users, 'Les amis ont été trouvés avec succès.');
     
         }
+
+        public function relation($id1, $id2) {
+
+            $relation = Relation::where([
+                ['user1_id', '=', $id1],
+                ['user2_id', '=', $id2]
+            ])->pluck('relation');
+
+            return $relation;
+
+        }
     
         //Relations - POST/Destroy
         public function befriend($idUser, $idFriendUser) {

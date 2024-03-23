@@ -38,6 +38,9 @@ Route::post('login', [AuthController::class, 'login'])->name('login');
     // Tous les indésirables
     Route::get('user/{id}/blocked', [AppUserController::class, 'blocked'])->name('blocked');
 
+    // Relation entre deux individus
+    Route::get('user/{id1}/relation/{id2}', [AppUserController::class, 'relation'])->name('relation');
+
     // Block
     Route::post('user/{id1}/block/{id2}', [AppUserController::class, 'block'])->name('block');
         
