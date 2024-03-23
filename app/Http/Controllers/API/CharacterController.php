@@ -26,10 +26,12 @@ class CharacterController extends DataController
 
     //GET - Compinion de l'usager
     public function showCharacter($id) {
-        $user = User::find($id);
+
+        $user = User::findOrFail($id);
         $character = $user->character;
 
-        return $this->sendResponse([$character], 'Le personnage a été trouvé avec succès.');
+        return $this->sendResponse($character, 'Le personnage a été trouvé avec succès.');
+
     }
 
 }

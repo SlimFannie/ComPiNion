@@ -71,7 +71,7 @@ class AuthController extends DataController
             return $this->sendError('Cet utilisateur n\'existe pas.');
         }
 
-        return $this->sendResponse([$user], 'L\'utilisateur trouvé avec succès.');
+        return $this->sendResponse($user, 'L\'utilisateur trouvé avec succès.');
     }
 
     // Logout the user
