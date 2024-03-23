@@ -51,7 +51,7 @@
                 ['user2_id', '=', $id],
                 ['relation', '=', 'friend']
             ])
-            ->get();
+            ->values();
     
             return $this->sendResponse($relation, 'Les amis ont été trouvés avec succès.');
     
@@ -62,7 +62,7 @@
             $relation = Relation::where([
                     ['user2_id', '=', $id],
                     ['relation', '=', 'blocked']
-            ])->get();
+            ])->values();
     
             return $this->sendResponse($relation, 'Les amis ont été trouvés avec succès.');
     
