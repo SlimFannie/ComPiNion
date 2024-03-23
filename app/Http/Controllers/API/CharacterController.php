@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Http\Controllers\API\DataController;
 use Illuminate\Http\Request;
+
+use App\Http\Controllers\API\DataController;
 use App\Models\User;
 use App\Models\Character;
+use Illuminate\Http\Response;
 
-class CharacterController extends Controller
+class CharacterController extends DataController
 {
 
     //Ce controlleur gère les méthodes relativent aux Compinions.
