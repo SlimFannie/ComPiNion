@@ -271,9 +271,9 @@
 
                 $user = User::find($id);
 
-                $chaines = $user->chaines()->values();
+                $chaines = $user->chaines()->get();
 
-                Log::debug("Response data: " . json_encode($chaines)); // Ajoutez cette ligne pour afficher la réponse
+                Log::debug("User's chains: " . json_encode($chaines));
 
                 return $this->sendResponse($chaines, 'Le personnage a été trouvé avec succès.');
 
