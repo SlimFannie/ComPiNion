@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 
@@ -23,7 +23,7 @@ class CharacterController extends Controller
     public function showCharacter($id) {
         $user = User::find($id);
         $character = $user->character;
-        
+
         return $this->sendResponse($character, 'Le personnage a été trouvé avec succès.');
     }
 
