@@ -46,12 +46,7 @@
             $relation = Relation::where([
                     ['user1_id', '=', $id],
                     ['relation', '=', 'friend']
-            ])
-            ->orWhere([
-                ['user2_id', '=', $id],
-                ['relation', '=', 'friend']
-            ])
-            ->value();
+            ])->get();
     
             return $this->sendResponse($relation, 'Les amis ont été trouvés avec succès.');
     
@@ -60,9 +55,9 @@
         public function blocked($id) {
     
             $relation = Relation::where([
-                    ['user2_id', '=', $id],
+                    ['user1_id', '=', $id],
                     ['relation', '=', 'blocked']
-            ])->value();
+            ])->get();
     
             return $this->sendResponse($relation, 'Les amis ont été trouvés avec succès.');
     
