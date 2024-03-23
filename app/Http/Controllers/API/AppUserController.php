@@ -271,7 +271,7 @@
 
                 $user = User::find($id);
 
-                $chaines = $user->chaines()->get();
+                $chaines = $user->chaines()->values();
 
                 return $this->sendResponse($chaines, 'Le personnage a été trouvé avec succès.');
 
