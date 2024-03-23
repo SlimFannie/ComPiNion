@@ -52,12 +52,10 @@ class AuthController extends DataController
     
         if ($user && Hash::check($request->password, $user->password)) {
 
-            $nomCompinion = Character::find($user->character_id)->get('img');
             $response = [
                 'user' => $user,
                 'token' => $user->createToken('ComPiNion')->accessToken,
                 'message' => 'Vous vous êtes connecté avec succès.',
-                'nom' => $nomCompinion
             ];
             return response()->json($response, Response::HTTP_OK);
         } else {
