@@ -16,6 +16,9 @@
     class AppUserController extends DataController
     {
     
+        // Ce controlleur gère les méthodes relativent aux utilisateurs dans l'application Android.
+
+        //Relations - Get
         public function users($id) {
     
             $users = User::all();
@@ -54,6 +57,7 @@
     
         }
     
+        //Relations - POST/Destroy
         public function befriend($idUser, $idFriendUser) {
             $relation = new Relation;
             $relation->user1_id = $idUser;
@@ -89,22 +93,8 @@
     
             $relation->destroy();
         }
-    
-        public function showAllCharacters() {
-            $characters = Character::all()->map(function ($character) {
-                $character->img_url = asset('img/' . $character->img);
-                return $character;
-            });
-    
-            return $this->sendResponse($characters, 'Les personnages ont été trouvés avec succès.');
-        }
-    
-        public function showCharacter($id) {
-            $character = Character::findOrFail($id)->get();
-            return $this->sendResponse($character, 'Le personnage a été trouvé avec succès.');
-        }
-    
-        /*===================== Routes de modifications des informations de l'utilisateur ======================= */
+
+        // Routes de modifications des informations de l'utilisateur
         
         public function updateprenom(Request $request, $id) {
             try {
@@ -114,11 +104,11 @@
         
                 $user->save();
         
-                return $this->sendResponse('Modification réussie.', 200); // Pass both message and status code
+                return $this->sendResponse('Modification réussie.', 200); 
             }
             catch(\Throwable $e) {
                 Log::debug($e);
-                return $this->sendResponse('Une erreur est survenue.', 500); // You can handle error cases similarly
+                return $this->sendResponse('Une erreur est survenue.', 500); 
             }
         }
         
@@ -130,11 +120,11 @@
         
                 $user->save();
         
-                return $this->sendResponse('Modification réussie.', 200); // Pass both message and status code
+                return $this->sendResponse('Modification réussie.', 200); 
             }
             catch(\Throwable $e) {
                 Log::debug($e);
-                return $this->sendResponse('Une erreur est survenue.', 500); // You can handle error cases similarly
+                return $this->sendResponse('Une erreur est survenue.', 500); 
             }
         }      
     
@@ -146,11 +136,11 @@
         
                 $user->save();
         
-                return $this->sendResponse('Modification réussie.', 200); // Pass both message and status code
+                return $this->sendResponse('Modification réussie.', 200); 
             }
             catch(\Throwable $e) {
                 Log::debug($e);
-                return $this->sendResponse('Une erreur est survenue.', 500); // You can handle error cases similarly
+                return $this->sendResponse('Une erreur est survenue.', 500); 
             }
         }
         
@@ -163,11 +153,11 @@
         
                 $user->save();
         
-                return $this->sendResponse('Modification réussie.', 200); // Pass both message and status code
+                return $this->sendResponse('Modification réussie.', 200); 
             }
             catch(\Throwable $e) {
                 Log::debug($e);
-                return $this->sendResponse('Une erreur est survenue.', 500); // You can handle error cases similarly
+                return $this->sendResponse('Une erreur est survenue.', 500); 
             }
         }
         
@@ -179,11 +169,11 @@
         
                 $user->save();
         
-                return $this->sendResponse('Modification réussie.', 200); // Pass both message and status code
+                return $this->sendResponse('Modification réussie.', 200); 
             }
             catch(\Throwable $e) {
                 Log::debug($e);
-                return $this->sendResponse('Une erreur est survenue.', 500); // You can handle error cases similarly
+                return $this->sendResponse('Une erreur est survenue.', 500); 
             }
         }
 
@@ -195,11 +185,11 @@
         
                 $user->save();
         
-                return $this->sendResponse('Modification réussie.', 200); // Pass both message and status code
+                return $this->sendResponse('Modification réussie.', 200); 
             }
             catch(\Throwable $e) {
                 Log::debug($e);
-                return $this->sendResponse('Une erreur est survenue.', 500); // You can handle error cases similarly
+                return $this->sendResponse('Une erreur est survenue.', 500); 
             }
         }
 
@@ -207,28 +197,26 @@
             try {
                 $user = User::findOrFail($id);
         
-                // Check if the provided current password matches the user's current password
                 if (!Hash::check($request->current_password, $user->password)) {
-                    return $this->sendResponse('Mot de passe actuel incorrect.', 400); // Incorrect current password
+                    return $this->sendResponse('Mot de passe actuel incorrect.', 400); 
                     Log::debug("CURRENT PWD DOESNT MATCH" );
 
                 }
-        
-                // Update the user's password with the new hashed password
+    
                 $user->password = Hash::make($request->new_password);
         
                 Log::debug("WORKED" );
                 $user->save();
         
-                return $this->sendResponse('Mot de passe mis à jour avec succès.', 200); // Password updated successfully
+                return $this->sendResponse('Mot de passe mis à jour avec succès.', 200); 
             }
             catch(\Throwable $e) {
                 Log::debug($e);
-                return $this->sendResponse('Une erreur est survenue.', 500); // You can handle error cases similarly
+                return $this->sendResponse('Une erreur est survenue.', 500); 
             }
         }
         
-        /* Méthodes relatives aux streaks */
+        // Méthodes relatives aux streaks
         public function updatejours(Request $request, $id) {
             try {
                 $user = User::findOrFail($id);
@@ -237,11 +225,11 @@
         
                 $user->save();
         
-                return $this->sendResponse('Modification réussie.', 200); // Pass both message and status code
+                return $this->sendResponse('Modification réussie.', 200); 
             }
             catch(\Throwable $e) {
                 Log::debug($e);
-                return $this->sendResponse('Une erreur est survenue.', 500); // You can handle error cases similarly
+                return $this->sendResponse('Une erreur est survenue.', 500); 
             }
         }
 
@@ -259,11 +247,11 @@
                 $nouvelleChaine->start_date = now(); 
                 $nouvelleChaine->save();
 
-                return $this->sendResponse('Modification réussie.', 200); // Pass both message and status code
+                return $this->sendResponse('Modification réussie.', 200);
             }
             catch(\Throwable $e) {
                 Log::debug($e);
-                return $this->sendResponse('Une erreur est survenue.', 500); // You can handle error cases similarly
+                return $this->sendResponse('Une erreur est survenue.', 500); 
             }
         }
 
@@ -279,7 +267,7 @@
             }
             catch(\Throwable $e) {
                 Log::debug($e);
-                return $this->sendResponse('Une erreur est survenue.', 500); // You can handle error cases similarly
+                return $this->sendResponse('Une erreur est survenue.', 500); 
             }
         }
 

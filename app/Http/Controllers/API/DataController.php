@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 class DataController extends Controller
 {
 
+    // Ce controlleur nous permet de parser nos réponses vers l'application Android en json.
+
     /**
      * success response method.
      *

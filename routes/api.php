@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\AppUserController;
+use App\Http\Controllers\API\CharacterController;
 use App\Http\Controllers\FtpController;
 
 /*
@@ -67,12 +68,10 @@ Route::post('login', [AuthController::class, 'login'])->name('login');
     // Suppression du compte
     Route::delete('user/{id}/delete', [AppUserController::class, 'destroy'])->name('destroy');
 
-// Characters
-    
-    //Envoyer la liste des personnages pour l'écran de selection 
+// Compinions
         
-    // Tous les usagers
-    Route::get('showAllCharacters', [AppUserController::class, 'showAllCharacters'])->name('showAllCharacters');
+    // Tous les Compinions
+    Route::get('showAllCharacters', [CharacterController::class, 'showAllCharacters'])->name('showAllCharacters');
 
-    // Un seul usager
-    Route::get('showCharacter/{id}', [AppUserController::class, 'showCharacter'])->name('showCharacter');
+    // Le Compinion de l'usager
+    Route::get('showCharacter/{id}', [CharacterController::class, 'showCharacter'])->name('showCharacter');

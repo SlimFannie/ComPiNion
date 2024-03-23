@@ -16,7 +16,6 @@ class Relation extends Model
         'relation',
     ];
 
-
     public function user(): BelongsToMany {
         return $this->belongsTo(User::class, 'user1_id');
     }
