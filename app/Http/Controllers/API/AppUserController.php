@@ -90,11 +90,15 @@
     
         public function unfriend($idUser, $idFriendUser) {
 
-            $relation = Relation::where([
-                ['user1_id', '=', $idUser],
-                ['user2_id', '=', $idFriendUser],
-                ['relation', '=', 'friend']
-            ])->first();
+            $relation = Relation::where(function($query) use ($idUser, $idFriendUser) {
+                $query->where('user1_id', $idUser)
+                      ->where('user2_id', $idFriendUser)
+                      ->where('relation', 'friend');
+            })->orWhere(function($query) use ($idUser, $idFriendUser) {
+                $query->where('user1_id', $idFriendUser)
+                      ->where('user2_id', $idUser)
+                      ->where('relation', 'friend');
+            })->first();
     
             $relation->delete();
 
