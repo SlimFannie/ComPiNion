@@ -61,7 +61,7 @@
                 ['relation', '=', 'blocked']
             ])->pluck('user2_id');
 
-            $users = User::whereIn('id', $amis)->get();
+            $users = User::whereIn('id', $amis)->values();
     
             return $this->sendResponse($users, 'Les amis ont été trouvés avec succès.');
     
