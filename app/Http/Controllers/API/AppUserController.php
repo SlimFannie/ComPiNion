@@ -96,7 +96,7 @@
             ->where('relation', 'friend')
             ->first();
 
-            $relation->each->delete();
+            $relation->delete();
 
             return $this->sendResponse(null, 'Relations supprimées avec succès.');
         }
