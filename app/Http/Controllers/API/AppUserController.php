@@ -92,7 +92,7 @@
                 ['user1_id', '=', $idUser],
                 ['user2_id', '=', $idFriendUser],
                 ['relation', '=', 'friend']
-            ])->first();
+            ])->get();
     
             if ($relation) {
                 $relation->delete(); 
@@ -116,7 +116,7 @@
                 ['relation', '=', 'blocked']
             ])->get();
     
-            $relation->destroy();
+            $relation->delete();
         }
 
         // Routes de modifications des informations de l'utilisateur
