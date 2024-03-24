@@ -93,9 +93,9 @@
                 ['user1_id', '=', $idUser],
                 ['user2_id', '=', $idFriendUser],
                 ['relation', '=', 'friend']
-            ])->first();
+            ])->value('id');
 
-            $relation->destroy();
+            Relation::destroy($relation);
 
             return $this->sendResponse(null, 'Relations supprimées avec succès.');
         }
