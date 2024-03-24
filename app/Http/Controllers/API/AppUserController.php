@@ -92,9 +92,13 @@
                 ['user1_id', '=', $idUser],
                 ['user2_id', '=', $idFriendUser],
                 ['relation', '=', 'friend']
-            ])->get();
+            ])->first();
     
-            $relation->destroy();
+            if ($relation) {
+                $relation->delete(); 
+                return $this->sendResponse(null, 'Relation supprimée avec succès.');
+            } else 
+                return $this->sendError('Relation non trouvée.', 404); 
         }
     
         public function block($idUser, $idBlockedUser) {
