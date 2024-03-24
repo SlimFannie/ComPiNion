@@ -92,7 +92,7 @@
                 ['user1_id', '=', $idUser],
                 ['user2_id', '=', $idFriendUser],
                 ['relation', '=', 'friend']
-            ])->get();
+            ])->first();
     
             if ($relation) {
                 $relation->delete(); 
