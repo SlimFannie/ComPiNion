@@ -10,6 +10,8 @@ class Relation extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = ['user1_id', 'user2_id'];
+
     protected $fillable = [
         'user1_id',
         'user2_id',
