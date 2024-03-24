@@ -94,10 +94,6 @@
                 $query->where('user1_id', $idUser)
                       ->where('user2_id', $idFriendUser)
                       ->where('relation', 'friend');
-            })->orWhere(function($query) use ($idUser, $idFriendUser) {
-                $query->where('user1_id', $idFriendUser)
-                      ->where('user2_id', $idUser)
-                      ->where('relation', 'friend');
             })->first();
     
             $relation->delete();
