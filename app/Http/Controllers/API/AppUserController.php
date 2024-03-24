@@ -281,9 +281,7 @@
 
                 $user = User::find($id);
 
-                $chaines = $user->chaines()->get();
-
-                Log::debug("User's chains: " . json_encode($chaines));
+                $chaines = $user->chaines()->whereNotNull('end_date')->get();
 
                 return $this->sendResponse($chaines, 'Le personnage a été trouvé avec succès.');
 
