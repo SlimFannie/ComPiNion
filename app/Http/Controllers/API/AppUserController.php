@@ -74,7 +74,7 @@
                 ['user2_id', '=', $id2]
             ])->get('relation');
 
-            return $this->sendResponse([$relation], 'Les amis ont été trouvés avec succès.');
+            return $this->sendResponse($relation, 'Les amis ont été trouvés avec succès.');
 
         }
     
