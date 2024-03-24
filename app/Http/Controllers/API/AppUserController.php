@@ -61,7 +61,7 @@
                 ['relation', '=', 'blocked']
             ])->pluck('user2_id');
 
-            $users = User::whereIn('id', $amis)->values();
+            $users = User::whereIn('id', $amis)->get();
     
             return $this->sendResponse($users, 'Les amis ont été trouvés avec succès.');
     
@@ -72,7 +72,7 @@
             $relation = Relation::where([
                 ['user1_id', '=', $id1],
                 ['user2_id', '=', $id2]
-            ])->pluck('relation')->get();
+            ])->pluck('relation')->values();
 
             return $this->sendResponse($relation, 'Les amis ont été trouvés avec succès.');
 
