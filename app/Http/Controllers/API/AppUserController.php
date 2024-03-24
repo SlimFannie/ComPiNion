@@ -112,13 +112,17 @@
         }
     
         public function unblock($idUser, $idBlockedUser) {
-            $relation = Relation::where([
+
+            $relations = Relation::where([
                 ['user1_id', '=', $idUser],
                 ['user2_id', '=', $idBlockedUser],
                 ['relation', '=', 'blocked']
             ])->get();
-    
-            $relation->delete();
+
+            foreach ($relations as $relation) {
+                $relation->delete();
+            }
+            
         }
 
         // Routes de modifications des informations de l'utilisateur
