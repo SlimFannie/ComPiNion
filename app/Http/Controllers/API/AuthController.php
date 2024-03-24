@@ -39,10 +39,6 @@ class AuthController extends DataController
         $input = $request->all();
         $user = User::create($input);
 
-        $chaine = new Chaine();
-        $chaine->user_id = $user->id;
-        $chaine->save();
-
         $success['token'] =  $user->createToken('ComPiNion')->accessToken;
         $success['name'] =  $user->name;
 
