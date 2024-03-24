@@ -90,7 +90,7 @@
     
         public function unfriend($idUser, $idFriendUser) {
 
-            $relation = Relation::where([
+            $relations = Relation::where([
                 ['user1_id', '=', $idUser],
                 ['user2_id', '=', $idFriendUser],
                 ['relation', '=', 'friend']
