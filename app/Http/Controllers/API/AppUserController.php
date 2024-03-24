@@ -89,13 +89,15 @@
     
         public function unfriend($idUser, $idFriendUser) {
 
-            $relation = Relation::where([
+            $relations = Relation::where([
                 ['user1_id', '=', $idUser],
                 ['user2_id', '=', $idFriendUser],
                 ['relation', '=', 'friend']
             ])->get();
 
-            $relation->each->delete();
+            foreach($relations as $relation){
+                $relation->delete();
+            }
 
             return $this->sendResponse(null, 'Relations supprimées avec succès.');
         }
