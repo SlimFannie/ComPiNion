@@ -93,7 +93,7 @@
                 ['user1_id', '=', $idUser],
                 ['user2_id', '=', $idFriendUser],
                 ['relation', '=', 'friend']
-            ])->value('id');
+            ])->pluck('id');
 
             Relation::destroy($relation);
 
