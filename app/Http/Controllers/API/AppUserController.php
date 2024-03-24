@@ -90,11 +90,12 @@
     
         public function unfriend($idUser, $idFriendUser) {
 
-            $relation = Relation::where('user1_id', $idUser)
-            ->where('user2_id', $idFriendUser)
-            ->where('relation', 'friend')
-            ->first();
-
+            $relation = Relation::where([
+                ['user1_id', '=', $idUser],
+                ['user2_id', '=', $idBlockedUser],
+                ['relation', '=', 'blocked']
+            ])->get();
+    
             dd($relation);
             $relation->delete();
 
