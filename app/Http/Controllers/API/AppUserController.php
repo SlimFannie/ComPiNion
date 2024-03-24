@@ -92,8 +92,8 @@
 
             $relation = Relation::where([
                 ['user1_id', '=', $idUser],
-                ['user2_id', '=', $idBlockedUser],
-                ['relation', '=', 'blocked']
+                ['user2_id', '=', $idFriendUser],
+                ['relation', '=', 'friend']
             ])->get();
     
             foreach ($relations as $relation) {
