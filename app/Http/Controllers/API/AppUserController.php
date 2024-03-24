@@ -95,9 +95,9 @@
                 ['relation', '=', 'friend']
             ])->get();
 
-            foreach($relations as $relation){
+            $relations->each(function($relation) {
                 $relation->delete();
-            }
+            });
 
             return $this->sendResponse(null, 'Relations supprimées avec succès.');
         }
