@@ -7,6 +7,7 @@
     use App\Models\User;
     use App\Models\Character;
     use App\Models\Relation;
+    use DB;
     use Illuminate\Support\Facades\Log;
     use Hash;
 
@@ -89,11 +90,11 @@
     
         public function unfriend($idUser, $idFriendUser) {
 
-            $relation = Relation::where([
-                ['user1_id', '=', $idUser],
-                ['user2_id', '=', $idFriendUser],
-                ['relation', '=', 'friend']
-            ])->get()->each->delete();
+            DB::table('relations')
+            ->where('user1_id', $idUser)
+            ->where('user2_id', $idFriendUser)
+            ->where('relation', 'friend')
+            ->delete();
 
             return $this->sendResponse(null, 'Relations supprimées avec succès.');
         }
