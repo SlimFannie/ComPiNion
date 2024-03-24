@@ -72,7 +72,7 @@
             $relation = Relation::where([
                 ['user1_id', '=', $id1],
                 ['user2_id', '=', $id2]
-            ])->get('relation');
+            ])->value('relation');
 
             return $this->sendResponse($relation, 'Les amis ont été trouvés avec succès.');
 
