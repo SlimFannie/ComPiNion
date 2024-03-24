@@ -94,7 +94,7 @@
             ->where('user1_id', $idUser)
             ->where('user2_id', $idFriendUser)
             ->where('relation', 'friend')
-            ->get();
+            ->first();
 
             $relation->each->delete();
 
