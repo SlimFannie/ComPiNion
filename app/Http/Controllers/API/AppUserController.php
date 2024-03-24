@@ -96,7 +96,6 @@
                 ['relation', '=', 'friend']
             ])->get();
     
-            dd($relation);
             $relation->delete();
 
             return $this->sendResponse(null, 'Relations supprimées avec succès.');
