@@ -35,7 +35,7 @@
     
             $blocked = array_merge($blocked, $blockedByUser2);
     
-            $users = $users->whereNotIn('id', $blocked)->values();
+            $users = $users->whereNotIn('id', array_merge([$id], $blocked))->values();
     
             return $this->sendResponse($users, 'Les utilisateurs ont été trouvés avec succès.');
     
