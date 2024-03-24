@@ -90,11 +90,13 @@
     
         public function unfriend($idUser, $idFriendUser) {
 
-            DB::table('relations')
+            $relation = DB::table('relations')
             ->where('user1_id', $idUser)
             ->where('user2_id', $idFriendUser)
             ->where('relation', 'friend')
-            ->delete();
+            ->get();
+
+            $relation->each->delete();
 
             return $this->sendResponse(null, 'Relations supprimées avec succès.');
         }
