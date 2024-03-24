@@ -88,17 +88,21 @@
         }
     
         public function unfriend($idUser, $idFriendUser) {
-            $relation = Relation::where([
+            $relations = Relation::where([
                 ['user1_id', '=', $idUser],
                 ['user2_id', '=', $idFriendUser],
                 ['relation', '=', 'friend']
-            ])->first();
-    
-            if ($relation) {
-                $relation->delete(); 
-                return $this->sendResponse(null, 'Relation supprimée avec succès.');
-            } else 
-                return $this->sendError('Relation non trouvée.', 404); 
+            ])->get();
+        
+            if ($relations->isEmpty()) {
+                return $this->sendError('Relation non trouvée.', 404);
+            }
+        
+            foreach ($relations as $relation) {
+                $relation->delete();
+            }
+        
+            return $this->sendResponse(null, 'Relations supprimées avec succès.');
         }
     
         public function block($idUser, $idBlockedUser) {
