@@ -68,6 +68,7 @@ Route::post('login', [AuthController::class, 'login'])->name('login');
 
     // Streak
     Route::patch('user/{id}/update/endstreak', [AppUserController::class, 'endStreak'])->name('endStreak');
+    Route::post('user/{id}/resetstreak', [AppUserController::class, 'resetStreak'])->name('resetStreak');
     Route::get('user/{id}/streaks', [AppUserController::class, 'getStreaks'])->name('getStreaks');
     Route::get('user/{id}/streak', [AppUserController::class, 'getStreak']);
 

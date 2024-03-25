@@ -273,6 +273,19 @@
                 $chaineEnCours->end_date = now();
                 $chaineEnCours->save();
 
+                return $this->sendResponse('Modification réussie.', 200);
+            }
+            catch(\Throwable $e) {
+                Log::debug($e);
+                return $this->sendResponse('Une erreur est survenue.', 500); 
+            }
+        }
+
+        public function resetstreak($id) {
+            try {
+
+                $user = User::find($id);
+
                 $nouvelleChaine = new Chaine();
                 $nouvelleChaine->user_id = $user->id;
                 $nouvelleChaine->start_date = now(); 
