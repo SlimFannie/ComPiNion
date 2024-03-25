@@ -270,7 +270,7 @@
 
                 $user = User::find($id);
 
-                $chaineEnCours = $user->derniereChaine();
+                $chaineEnCours = $user->derniereChaine()->first();
                 $chaineEnCours->end_date = now();
                 $chaineEnCours->save();
 
@@ -300,7 +300,7 @@
 
                 Log::debug($e);
                 return $this->sendResponse('Une erreur est survenue.', 500); 
-                
+
             }
         }
 
