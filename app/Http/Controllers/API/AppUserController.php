@@ -271,7 +271,6 @@
                 $user = User::find($id);
 
                 $chaineEnCours = $user->derniereChaine();
-                dd($chaineEnCours);
                 $chaineEnCours->end_date = now();
                 $chaineEnCours->save();
 
@@ -291,13 +290,17 @@
                 $nouvelleChaine = new Chaine();
                 $nouvelleChaine->user_id = $user->id;
                 $nouvelleChaine->start_date = now(); 
+                $nouvelleChaine->end_date = null;
                 $nouvelleChaine->save();
 
                 return $this->sendResponse('Modification réussie.', 200);
+
             }
             catch(\Throwable $e) {
+
                 Log::debug($e);
                 return $this->sendResponse('Une erreur est survenue.', 500); 
+                
             }
         }
 
