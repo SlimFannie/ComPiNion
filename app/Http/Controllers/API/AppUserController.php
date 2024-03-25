@@ -7,6 +7,7 @@
     use App\Models\User;
     use App\Models\Character;
     use App\Models\Relation;
+    use App\Models\Chaine;
     use DB;
     use Illuminate\Support\Facades\Log;
     use Hash;
