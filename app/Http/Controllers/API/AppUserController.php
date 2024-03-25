@@ -271,6 +271,7 @@
                 $user = User::find($id);
 
                 $chaineEnCours = $user->derniereChaine();
+                dd($chaineEnCours);
                 $chaineEnCours->end_date = now();
                 $chaineEnCours->save();
 
