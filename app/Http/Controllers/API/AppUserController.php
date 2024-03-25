@@ -269,7 +269,7 @@
             try {
 
                 $user = User::find($id);
-
+                Log::d("allo");
                 $chaineEnCours = $user->derniereChaine()->first();
                 $chaineEnCours->end_date = now();
                 $chaineEnCours->save();
