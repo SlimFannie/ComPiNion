@@ -8,6 +8,7 @@ use App\Http\Controllers\API\DataController;
 use App\Models\User;
 use App\Models\Character;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Log;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -50,11 +51,13 @@ class AuthController extends DataController
     public function login(Request $request) {
 
         $user = User::where('email', $request->email)->first();
+        $companion = Character::where('id',$user->character_id );
     
         if ($user && Hash::check($request->password, $user->password)) {
-
+            Log::debug('Companion: ' + $user->character_id);
             $response = [
                 'user' => $user,
+                'companion' => $companion,
                 'token' => $user->createToken('ComPiNion')->accessToken,
                 'message' => 'Vous vous êtes connecté avec succès.',
             ];
