@@ -54,7 +54,6 @@ class AuthController extends DataController
         $companion = Character::where('id',$user->character_id );
     
         if ($user && Hash::check($request->password, $user->password)) {
-            Log::debug('Companion: ' + $user->character_id);
             $response = [
                 'user' => $user,
                 'companion' => $companion,
