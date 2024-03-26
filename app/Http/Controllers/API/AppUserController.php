@@ -228,18 +228,18 @@
         public function updatePassword(Request $request, $id) {
             try {
                 $user = User::findOrFail($id);
-        
-                if (!Hash::check($request->current_password, $user->password)) {
+                $currentPassword = $request->input('current_password');
+                $newPassword = $request->input('new_password');
+                if (!Hash::check($currentPassword, $user->password)) {
+                    Log::debug("CURRENT PWD DOESN'T MATCH");
                     return $this->sendResponse('Mot de passe actuel incorrect.', 400); 
-                    Log::debug("CURRENT PWD DOESNT MATCH" );
-
                 }
-    
-                $user->password = Hash::make($request->new_password);
         
-                Log::debug("WORKED" );
+                $user->password = Hash::make($newPassword);
+        
                 $user->save();
         
+                Log::debug("PASSWORD UPDATED SUCCESSFULLY");
                 return $this->sendResponse('Mot de passe mis à jour avec succès.', 200); 
             }
             catch(\Throwable $e) {
