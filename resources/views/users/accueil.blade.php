@@ -51,8 +51,6 @@
             </button>
         </div>
 
-        
-
         <div class="modal-body">
             
             <form method="POST" action="{{ route('users.store') }}" enctype="multipart/form-data">
@@ -105,9 +103,7 @@
 
     <!-- Fin du modal -->
 
-
-
-    <!--Tableu des utilisateurs-->
+    <!--Tableau des utilisateurs-->
     <h2>Liste des utilisateurs</h2>
     @if (count($users) > 0)
     <div class="table-wrapper">
@@ -137,13 +133,94 @@
                 </form></td>
             </tr>
             @endforeach
-            
-
             <tbody>
         </table>
     </div>
     @else
     <p class ="aucun-form">Aucun utilisateur </p>
+    @endif
+    </div>
+
+    <h2>Liste des compinions</h2>
+    @if (count($compinions) > 0)
+    <div class="table-wrapper">
+        <table id="dataTable" class="fl-table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>URL</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach ($compinions as $compinion)
+            <tr>
+                <td>{{ $compinion['id'] }}</td>
+                <td>{{ $compinion['nom'] }}</td>
+                <td>{{ $compinion['img'] }}</td>
+            </tr>
+            @endforeach
+            <tbody>
+        </table>
+    </div>
+    @else
+    <p class ="aucun-form">Aucun compinion</p>
+    @endif
+    </div>
+
+    <h2>Séries des utilisateurs</h2>
+    @if (count($chaines) > 0)
+    <div class="table-wrapper">
+        <table id="dataTable" class="fl-table">
+            <thead>
+            <tr>
+                <th>Id de l'utilisateur</th>
+                <th>Date de début</th>
+                <th>Date de fin</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach ($chaines as $chaine)
+            <tr>
+                <td>{{ $chaine['user_id'] }}</td>
+                <td>{{ $chaine['start_date'] }}</td>
+                <td>{{ $chaine['end_date'] }}</td>
+            </tr>
+            @endforeach
+            <tbody>
+        </table>
+    </div>
+    @else
+    <p class ="aucun-form">Il n'y a aucune série en cours</p>
+    @endif
+    </div>
+
+    <h2>Relation des utilisateurs</h2>
+    @if (count($relations) > 0)
+    <div class="table-wrapper">
+        <table id="dataTable" class="fl-table">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Usager 1</th>
+                <th>Usager 2</th>
+                <th>Type de relation</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach ($relations as $relation)
+            <tr>
+                <td>{{ $relation['id'] }}</td>
+                <td>{{ $relation['user1_id'] }}</td>
+                <td>{{ $relation['user2_id'] }}</td>
+                <td>{{ $relation['relation'] }}</td>
+            </tr>
+            @endforeach
+            <tbody>
+        </table>
+    </div>
+    @else
+    <p class ="aucun-form">Il n'y a aucune relation à déclarer</p>
     @endif
     </div>
     

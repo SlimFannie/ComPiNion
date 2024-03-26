@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 
 use App\Models\User;
+use App\Models\Chaine;
+use App\Models\Character;
+use App\Models\Relation;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,15 +21,17 @@ class UsersController extends Controller
     {
         try{
             $users = User::all();
+            $relations = Relation::all();
+            $chaines = Chaine::all();
+            $compinions = Character::all();
 
-            return view ('users.accueil', compact('users') );
+            return view ('users.accueil', compact('users', 'relations', 'chaines', 'compinions') );
         } catch (\Throwable $th) {
             Log::debug($th);
             return redirect()->back()->withErrors(['Une erreur est survenue']);
         }
-
-
     }
+
     public function formConnexion()
     {
         return view ('users.formConnexion');
@@ -47,10 +52,8 @@ class UsersController extends Controller
        $donneValider = $request->validate($request->rules(), $request->messages());
         try {
             
-            // Créer une nouvelle instance du modèle RapportAccident et attribuer les valeurs
             $user = new User;
 
-            // Enregistrer les autres champs du rapport d'accident
             $user->pseudo = $donneValider['pseudo'];
             $user->nom = $donneValider['nom'];
             $user->prenom = $donneValider['prenom'];
