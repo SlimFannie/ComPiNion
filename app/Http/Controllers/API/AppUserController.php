@@ -265,9 +265,9 @@
         public function getJours($id) {
             try {
 
-                $user = User::find($id)->getJoursAttribute();
+                $jours = User::find($id)->getJoursAttribute();
 
-                return $this->sendResponse('Modification réussie.', 200);
+                return $this->sendResponse($jours, 'Modification réussie.', 200);
             }
             catch(\Throwable $e) {
                 Log::debug($e);
