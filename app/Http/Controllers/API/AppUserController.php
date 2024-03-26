@@ -266,8 +266,8 @@
             try {
 
                 $jours = User::find($id)->getJoursAttribute();
-
-                return $this->sendResponse($jours, 'Modification réussie.', 200);
+                return response()->json($jours, 200);
+                //return $this->sendResponse($jours, 'Modification réussie.', 200);
             }
             catch(\Throwable $e) {
                 Log::debug($e);
