@@ -60,6 +60,7 @@ Route::post('login', [AuthController::class, 'login'])->name('login');
     Route::patch('user/{id}/update/prenom', [AppUserController::class, 'updateprenom'])->name('updateprenom');
     Route::patch('user/{id}/update/nom', [AppUserController::class, 'updatenom'])->name('updatenom');
     Route::patch('user/{id}/update/pseudo', [AppUserController::class, 'updatepseudo'])->name('updatepseudo');
+    Route::patch('user/{id}/update/companion', [AppUserController::class, 'updateCompanion'])->name('updateCompanion');
     Route::patch('user/{id}/update/email', [AppUserController::class, 'updateemail'])->name('updateemail');
     Route::patch('user/{id}/update/merite', [AppUserController::class, 'updatemerite'])->name('updatemerite');
     Route::patch('user/{id}/update/jours', [AppUserController::class, 'updatejours'])->name('updatejours');

@@ -175,7 +175,21 @@
                 return $this->sendResponse('Une erreur est survenue.', 500); 
             }
         }
+        public function updateCompanion(Request $request, $id) {
+            try {
+                $user = User::findOrFail($id);
+                $companion = Character::where('id',$user->character_id)->first();
+                $user->character_id = empty($request->character_id) ? $user->character_id : $request->character_id;
         
+                $user->save();
+        
+                return $this->sendResponse('Modification réussie.', 200); 
+            }
+            catch(\Throwable $e) {
+                Log::debug($e);
+                return $this->sendResponse('Une erreur est survenue.', 500); 
+            }
+        }
     
         public function updateemail(Request $request, $id) {
             try {
@@ -247,6 +261,8 @@
                 return $this->sendResponse('Une erreur est survenue.', 500); 
             }
         }
+        
+        
         
         // Méthodes relatives aux streaks
         public function updatejours(Request $request, $id) {
