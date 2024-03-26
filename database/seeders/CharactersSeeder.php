@@ -27,7 +27,7 @@ class CharactersSeeder extends Seeder
             [  
                 'name'=>'chicken',
                 //'img'=>'https://imgur.com/HTPjQH1.png'
-                'img'=>'ch_chicken.png'
+                'img'=>'poule.png'
             ],
             [  
                 'name'=>'monkey',
