@@ -285,8 +285,6 @@
             try {
 
                 $user = User::find($id);
-                $user->jours = 0;
-                $user->save();
 
                 $chaineEnCours = $user->derniereChaine()->first();
                 $chaineEnCours->end_date = now();
@@ -310,6 +308,9 @@
                 $nouvelleChaine->start_date = now(); 
                 $nouvelleChaine->end_date = null;
                 $nouvelleChaine->save();
+
+                $user->jours = $user->getJoursAttribute();
+                $user->save();
 
                 return $this->sendResponse('Modification réussie.', 200);
 
