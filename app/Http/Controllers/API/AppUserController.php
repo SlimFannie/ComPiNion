@@ -303,14 +303,14 @@
 
                 $user = User::find($id);
 
+                $user->jours = 0;
+                $user->save();
+
                 $nouvelleChaine = new Chaine();
                 $nouvelleChaine->user_id = $user->id;
                 $nouvelleChaine->start_date = now(); 
                 $nouvelleChaine->end_date = null;
                 $nouvelleChaine->save();
-
-                $user->jours = $user->getJoursAttribute();
-                $user->save();
 
                 return $this->sendResponse('Modification réussie.', 200);
 

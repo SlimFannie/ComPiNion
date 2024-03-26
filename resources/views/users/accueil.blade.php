@@ -114,7 +114,7 @@
                 <th>Nom</th>
                 <th>Prénom</th>
                 <th>Compinion</th>
-                <th></th>
+                <th>Supprimer</th>
             </tr>
             </thead>
             <tbody>
@@ -124,8 +124,6 @@
                 <td>{{ $user['nom'] }}</td>
                 <td>{{ $user['prenom'] }}</td>
                 <td>{{ $user['compinion_id'] }}</td>
-                <td>N/A</td>
-                <td>N/A</td>
                 <td><form class="delete-form" action="{{ route('users.destroy', $user->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
