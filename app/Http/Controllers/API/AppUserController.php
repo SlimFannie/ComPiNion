@@ -269,7 +269,7 @@
             try {
                 $user = User::findOrFail($id);
         
-                $user->jours = empty($request->jours) ? $user->jours : $request->jours;
+                $user->jours = $user->getJoursAttribute();
         
                 $user->save();
         
@@ -308,9 +308,6 @@
                 $nouvelleChaine->start_date = now(); 
                 $nouvelleChaine->end_date = null;
                 Chaine::create($nouvelleChaine);
-
-                $user->jours = $user->getJoursAttribute();
-                $user->save();
 
                 return $this->sendResponse('Modification réussie.', 200);
 
