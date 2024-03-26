@@ -328,7 +328,7 @@
 
                 $user = User::find($id);
 
-                $chaines = $user->chaines()->whereNotNull('end_date')->get();
+                $chaines = $user->chaines()->whereNotNull('end_date')->values();
 
                 return $this->sendResponse($chaines, 'Le personnage a été trouvé avec succès.');
 

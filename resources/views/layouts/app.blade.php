@@ -50,7 +50,7 @@
 
         <a class="nav-link blue my-2" href="">
               <img class="img-fluid logoUser" src="{{ asset('img/user.png') }}" alt="">  
-              {{ $user['pseudo'] }} 
+              {{ $loggeduser['pseudo'] }} 
         </a>
 
         <hr>
