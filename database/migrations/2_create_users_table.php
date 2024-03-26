@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id()->autoIncrement();
-            $table->string('nom');
-            $table->string('prenom');
+            $table->string('nom')->nullable(); //Nettoyage
+            $table->string('prenom')->nullable(); //Nettoyage
             $table->string('pseudo', 14);
             $table->boolean('admin')->default(false);
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('email', 255)->unique();
+            $table->timestamp('email_verified_at')->nullable(); //Nettoyage
             $table->string('password');
             $table->unsignedBigInteger('character_id');
             $table->foreign('character_id')->references('id')->on('characters')->onDelete('cascade');

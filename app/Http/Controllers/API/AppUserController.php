@@ -285,6 +285,8 @@
             try {
 
                 $user = User::find($id);
+                $user->jours = 0;
+                $user->save();
 
                 $chaineEnCours = $user->derniereChaine()->first();
                 $chaineEnCours->end_date = now();

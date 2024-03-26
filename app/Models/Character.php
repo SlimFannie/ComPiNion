@@ -10,7 +10,6 @@ class Character extends Model
     use HasFactory;
 
     // Un Compinion a plusieurs usagers
-
     public function users()
     {
         return $this->hasMany(User::class);

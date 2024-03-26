@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('characters', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
-            $table->string('img')->nullable();
+            $table->string('name', 20);
+            $table->string('img')->unique();
             $table->timestamps();
         });
     }

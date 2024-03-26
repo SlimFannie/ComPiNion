@@ -65,15 +65,18 @@ class User extends Authenticatable implements MustVerifyEmail
     Cela nous permet de calculer la colonne jour de la table user en fonction de la date de début de la série (chaine) en cours et la date de la journée d'aujourd'hui.
     Pour que cela fonctionne, il faut respecter la syntaxe prévue par Laravel, soit get[nomdelacolonne]Attribute(). Dans ce cas-ci: getJoursAttribute().
     */
+    
     public function getJoursAttribute()
     {
 
-        //Nous allons chercher la série en cours de l'utilisateur. Pour ce faire, nous regardons laquelle a une valeur null.
+        /* Nous allons chercher la série en cours de l'utilisateur. 
+        Pour ce faire, nous regardons laquelle a une valeur null. */
         $chaineEnCours = $this->chaines()->whereNull('end_date')->first();
     
         if ($chaineEnCours) {        
             $startDate = $chaineEnCours->start_date;
-            //Nous utilisons la librairie Carbon inclut dans Laravel pour parser notre date de début et la comparer à la date d'aujourd'hui.
+            /*Nous utilisons la librairie Carbon inclut dans Laravel pour parser 
+            notre date de début et la comparer à la date d'aujourd'hui. */
             return Carbon::parse($startDate)->diffInDays(Carbon::now()); 
         }
         

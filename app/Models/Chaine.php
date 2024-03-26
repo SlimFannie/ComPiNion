@@ -16,6 +16,7 @@ class Chaine extends Model
         'end_date',
     ];
 
+    // Une chaine a un user
     public function user()
     {
         return $this->belongsTo(User::class);
