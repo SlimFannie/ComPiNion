@@ -63,11 +63,11 @@ Route::post('login', [AuthController::class, 'login'])->name('login');
     Route::patch('user/{id}/update/companion', [AppUserController::class, 'updateCompanion'])->name('updateCompanion');
     Route::patch('user/{id}/update/email', [AppUserController::class, 'updateemail'])->name('updateemail');
     Route::patch('user/{id}/update/merite', [AppUserController::class, 'updatemerite'])->name('updatemerite');
-    Route::patch('user/{id}/update/jours', [AppUserController::class, 'updatejours'])->name('updatejours');
     Route::patch('user/{id}/update/password', [AppUserController::class, 'updatePassword'])->name('updatePassword');
     Route::patch('user/{id}/update/limite', [AppUserController::class, 'updatelimite'])->name('updatelimite');
 
     // Streak
+    Route::get('user/{id}/jours', [AppUserController::class, 'getJours'])->name('getJours');
     Route::patch('user/{id}/update/endstreak', [AppUserController::class, 'endStreak'])->name('endStreak');
     Route::post('user/{id}/resetstreak', [AppUserController::class, 'resetStreak'])->name('resetStreak');
     Route::get('user/{id}/streaks', [AppUserController::class, 'getStreaks'])->name('getStreaks');

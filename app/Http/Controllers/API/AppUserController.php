@@ -260,20 +260,14 @@
                 Log::debug($e);
                 return $this->sendResponse('Une erreur est survenue.', 500); 
             }
-        }
-        
-        
-        
-        // Méthodes relatives aux streaks
-        public function updatejours(Request $request, $id) {
+        }  
+
+        public function getJours($id) {
             try {
-                $user = User::findOrFail($id);
-        
-                $user->jours = $user->getJoursAttribute();
-        
-                $user->save();
-        
-                return $this->sendResponse('Modification réussie.', 200); 
+
+                $user = User::find($id)->getJoursAttribute();
+
+                return $this->sendResponse('Modification réussie.', 200);
             }
             catch(\Throwable $e) {
                 Log::debug($e);
