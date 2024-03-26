@@ -49,8 +49,7 @@
         <hr>
 
         <a class="nav-link blue my-2" href="">
-              <img class="img-fluid logoUser" src="{{ asset('img/user.png') }}" alt="">
-              <h5 class="nom-user">Nom User</h5>          
+              <img class="img-fluid logoUser" src="{{ asset('img/user.png') }}" alt="">   
         </a>
 
         <hr>
@@ -64,14 +63,14 @@
               </div>
         </div>
         <hr>
-        <div href="#" class="nav-link ">
+        <!-- <div href="#" class="nav-link ">
         <i class="fa-solid fa-file-lines blue"></i>
             <a class="blue titreNav" href=""><span class="mx-2">Statistiques:</span></a>
             <div class="mt-3 mx-3">
                 <h6><a class="liens" href="">Statistiques d'utilisation</a></h6>
             </div>
         </div>
-        <hr> 
+        <hr> -->
 
         <div class="mx-3">
         @if(auth()->check())

@@ -11,8 +11,8 @@
 
     <div class="liste-notifications">
         <div class="leftSpace">
-        <input type="text" id="searchInput" placeholder="Rechercher...">
-        <button onclick="searchTable()" id="searchButton" class="btn btn-search"><i class="fa-solid fa-search"></i>Rechercher</button>
+        <!--<input type="text" id="searchInput" placeholder="Rechercher...">
+        <button onclick="searchTable()" id="searchButton" class="btn btn-search"><i class="fa-solid fa-search"></i>Rechercher</button>-->
             
         </div>
         <div class="navigationRapide">
@@ -114,7 +114,6 @@
                 <th>Nom</th>
                 <th>Prénom</th>
                 <th>Compinion</th>
-                <th>Série actuelle</th>
                 <th></th>
             </tr>
             </thead>
@@ -124,6 +123,7 @@
                 <td>{{ $user['pseudo'] }}</td>
                 <td>{{ $user['nom'] }}</td>
                 <td>{{ $user['prenom'] }}</td>
+                <td>{{ $user['compinion_id'] }}</td>
                 <td>N/A</td>
                 <td>N/A</td>
                 <td><form class="delete-form" action="{{ route('users.destroy', $user->id) }}" method="POST">

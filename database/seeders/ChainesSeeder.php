@@ -18,6 +18,11 @@ class ChainesSeeder extends Seeder
         DB::table('chaines')->insert([
             [  
                 'user_id'=>'1',
+                'start_date'=> Carbon::createFromFormat('Y-m-d', '2024-03-10'),
+                'end_date'=> Carbon::createFromFormat('Y-m-d', '2024-03-16'),
+            ],
+            [  
+                'user_id'=>'1',
                 'start_date'=> Carbon::createFromFormat('Y-m-d', '2024-03-16'),
                 'end_date'=>now()
             ],
