@@ -51,7 +51,7 @@ class AuthController extends DataController
     public function login(Request $request) {
 
         $user = User::where('email', $request->email)->first();
-        $companion = Character::where('id',$user->character_id );
+        $companion = Character::where('id',$user->character_id)->first();
     
         if ($user && Hash::check($request->password, $user->password)) {
             $response = [
