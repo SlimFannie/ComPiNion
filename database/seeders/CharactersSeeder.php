@@ -32,7 +32,7 @@ class CharactersSeeder extends Seeder
             [  
                 'name'=>'monkey',
                 //'img'=>'https://imgur.com/HgrM7Ci.png'
-                'img'=>'ch_rabbit.png'
+                'img'=>'ch_monkey.png'
             ],
 
         ]);
