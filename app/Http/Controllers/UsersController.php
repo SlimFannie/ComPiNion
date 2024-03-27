@@ -125,7 +125,7 @@ class UsersController extends Controller
                 $loggeduser = Auth::user();
                 if ($loggeduser->admin == true) {
                     Log::debug("Connexion réussi");
-                    return redirect()->route('users.accueil', 'loggeduser');
+                    return redirect()->route('users.accueil');
                 }
             } else {
             //  Log::debug(Auth::attempt(['email'=> $request->email, 'password' => $request->password]));
