@@ -125,13 +125,13 @@ class UsersController extends Controller
                 $loggeduser = Auth::user();
                 if ($loggeduser->admin == true) {
                     Log::debug("Connexion réussi");
-                    return redirect()->route('users.accueil');
+                    return redirect()->with($loggeduser)->route('users.accueil');
                 } 
             } else {
             //  Log::debug(Auth::attempt(['email'=> $request->email, 'password' => $request->password]));
                 Log::debug("Connexion echoué");
             // Log::debug($request->all());
-                return redirect()->back()->with($loggeduser)->withErrors('Les informations d\'identification sont incorrectes. Veuillez réessayer.');
+                return redirect()->back()->withErrors('Les informations d\'identification sont incorrectes. Veuillez réessayer.');
 
             }
         } catch (\Throwable $e) {
