@@ -126,6 +126,8 @@ class UsersController extends Controller
                 if ($loggeduser->admin == true) {
                     Log::debug("Connexion réussi");
                     return redirect()->route('users.accueil');
+                } else {
+                    return redirect()->back()->withErrors('Désolé, ces informations ne vous permettent pas d\'entrer ici.');
                 }
             } else {
             //  Log::debug(Auth::attempt(['email'=> $request->email, 'password' => $request->password]));
