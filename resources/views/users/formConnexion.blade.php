@@ -34,9 +34,6 @@
     <p id="errPass"></p>
 
     <button type="submit" id="login">Log In</button>
-    <div class="forgotPwd">
-        <a href="" >Mot de passe oublie?</a>
-    </div>
 
   </form>
 </body>
