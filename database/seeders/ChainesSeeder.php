@@ -33,6 +33,16 @@ class ChainesSeeder extends Seeder
             ],
             [  
                 'user_id'=>'2',
+                'start_date'=> Carbon::createFromFormat('Y-m-d', '2024-03-10'),
+                'end_date'=> Carbon::createFromFormat('Y-m-d', '2024-03-15'),
+            ],
+            [  
+                'user_id'=>'2',
+                'start_date'=> Carbon::createFromFormat('Y-m-d', '2024-03-15'),
+                'end_date'=> Carbon::createFromFormat('Y-m-d', '2024-03-17'),
+            ],
+            [  
+                'user_id'=>'2',
                 'start_date'=> Carbon::createFromFormat('Y-m-d', '2024-03-17'),
                 'end_date'=>null
             ],
@@ -43,6 +53,36 @@ class ChainesSeeder extends Seeder
             ],
             [  
                 'user_id'=>'4',
+                'start_date'=> Carbon::createFromFormat('Y-m-d', '2024-03-21'),
+                'end_date'=>null
+            ],
+            [  
+                'user_id'=>'5',
+                'start_date'=> Carbon::createFromFormat('Y-m-d', '2024-03-21'),
+                'end_date'=>null
+            ],
+            [  
+                'user_id'=>'6',
+                'start_date'=> Carbon::createFromFormat('Y-m-d', '2024-03-21'),
+                'end_date'=>null
+            ],
+            [  
+                'user_id'=>'7',
+                'start_date'=> Carbon::createFromFormat('Y-m-d', '2024-03-21'),
+                'end_date'=>null
+            ],
+            [  
+                'user_id'=>'8',
+                'start_date'=> Carbon::createFromFormat('Y-m-d', '2024-03-21'),
+                'end_date'=>null
+            ],
+            [  
+                'user_id'=>'9',
+                'start_date'=> Carbon::createFromFormat('Y-m-d', '2024-03-21'),
+                'end_date'=>null
+            ],
+            [  
+                'user_id'=>'10',
                 'start_date'=> Carbon::createFromFormat('Y-m-d', '2024-03-21'),
                 'end_date'=>null
             ],

@@ -35,7 +35,66 @@ class RelationsSeeder extends Seeder
             'user2_id' => 3,
             'relation' => 'friend'
             ],
-
+            [
+            'user1_id' => 4,
+            'user2_id' => 5,
+            'relation' => 'friend'
+            ],
+            [
+            'user1_id' => 1,
+            'user2_id' => 5,
+            'relation' => 'friend'
+            ],
+            [
+            'user1_id' => 1,
+            'user2_id' => 6,
+            'relation' => 'friend'
+            ],
+            [
+            'user1_id' => 1,
+            'user2_id' => 7,
+            'relation' => 'friend'
+            ],
+            [
+            'user1_id' => 2,
+            'user2_id' => 7,
+            'relation' => 'friend'
+            ],
+            [
+            'user1_id' => 2,
+            'user2_id' => 8,
+            'relation' => 'friend'
+            ],
+            [
+            'user1_id' => 3,
+            'user2_id' => 8,
+            'relation' => 'friend'
+            ],
+            [
+            'user1_id' => 3,
+            'user2_id' => 9,
+            'relation' => 'friend'
+            ],
+            [
+            'user1_id' => 3,
+            'user2_id' => 10,
+            'relation' => 'friend'
+            ],
+            [
+            'user1_id' => 4,
+            'user2_id' => 10,
+            'relation' => 'friend'
+            ],
+            [
+            'user1_id' => 4,
+            'user2_id' => 9,
+            'relation' => 'blocked'
+            ],
+            [
+            'user1_id' => 4,
+            'user2_id' => 8,
+            'relation' => 'blocked'
+            ],
         ]);
     }
 }
