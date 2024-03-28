@@ -99,8 +99,8 @@
                 <th>Pseudo</th>
                 <th>Nom</th>
                 <th>Prénom</th>
-                <th>Compinion</th>
-                <th>Série actuelle</th>
+                <th>Points de mérites</th>
+                <th>Character</th>
                 <th></th>
             </tr>
             </thead>
@@ -110,8 +110,8 @@
                 <td>{{ $user['pseudo'] }}</td>
                 <td>{{ $user['nom'] }}</td>
                 <td>{{ $user['prenom'] }}</td>
-                <td>N/A</td>
-                <td>N/A</td>
+                <td>{{ $user['merite'] }}</td>
+                <td>{{ $user->character->name }}</td>
                 <td><form class="delete-form" action="{{ route('users.destroy', $user->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
