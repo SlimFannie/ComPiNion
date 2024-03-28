@@ -60,7 +60,7 @@ class UsersController extends Controller
             $user->email = $donneValider['email'];
             $user->password = $donneValider['password'];
             $user->limite = 0;
-            $user->character_id = $request->input('character_id');
+            $user->character_id = 1;
 
             $user->save();
         
